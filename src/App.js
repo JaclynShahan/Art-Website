@@ -1,22 +1,18 @@
-import React, {Component} from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Login from './components/Login.js';
 
-class App extends Component {
-  constructor() {
-    super()
-    this.state = {
+function App (props) {
 
-    }
-  }
-
-  render() {
+  
     return(
       <div>
+        <Login />
 
       </div>
     )
-  }
+  
 }
 
 export default App;
