@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import router from './router'
+//import {Link} from 'react-router-dom';
+//import router from './router'
 
 
 class Cart extends Component {
@@ -14,11 +14,7 @@ class Cart extends Component {
     render() {
         return(
             <div>
-                <div>
-                <Link to='/'>Home</Link>
-                <Link to='/login'>Login</Link>
-                </div>
-                {router}
+               
             </div>
         )
     }

@@ -1,6 +1,6 @@
-import React, {Component} from 'React';
-import {Link} from 'react-router-dom';
-import router from './router';
+import React, {Component} from 'react';
+//import {Link} from 'react-router-dom';
+//import router from './router';
 
 class Login extends Component {
     super() {
@@ -12,11 +12,7 @@ class Login extends Component {
     render() {
         return(
             <div>
-                <div>
-                <Link to='/'>Home</Link>
-                <Link to='/cart'>Cart</Link>
-                </div>
-                {router}
+             
 
             </div>
         )

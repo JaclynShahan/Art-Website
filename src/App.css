@@ -1,3 +1,4 @@
+@import "~antd/dist/antd.css";
 .App {
   text-align: center;
 }
@@ -19,4 +20,26 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.navbar {
+  color: white;
+  font-size: calc(10px + 2vmin);
+  height: 8vh;
+  margin: 15px;
+ 
+  
+}
+
+.links {
+  margin-right: 15px;
+  color: white;
+  
+}
+
+.contents {
+  height: 90vh;
+  width: 100vw;
+  background-color: black;
+  opacity: 0.5;
 }
