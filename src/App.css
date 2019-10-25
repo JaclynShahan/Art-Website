@@ -32,7 +32,6 @@
 }
 
 .links {
-  margin-right: 15px;
   color: white;
   
 }
@@ -42,4 +41,40 @@
   width: 100vw;
   background-color: black;
   opacity: 0.5;
+}
+.cart {
+  float: right;
+}
+
+.login {
+  float: left;
+}
+
+.homelink {
+  margin-left: 40%;
+}
+
+.applogo {
+  height: 15vh;
+  width: 100vw;
+  background-image: url("https://images.unsplash.com/photo-1561579537-ce3febff18a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+
+.logotitle {
+  color: white;
+  font-size: 40px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
+  margin-left: 30%;
+  margin-top: 15px;  
+}
+
+.footer {
+  height: 2vh;
+  width: 100vw;
+  font-size: 10px;
+  font-family: 'Courier New', Courier, monospace;
 }
