@@ -19,7 +19,11 @@ class Home extends Component {
             <div>
                 <Layout>
          <Content className="contents">Content</Content>
-         <Footer className="footer"><h2> Like me on: www.facebook.com/blah   <Icon type="facebook"/></h2> <h2>Follow me at: www.twitter.com/blah  <Icon type="twitter"/></h2></Footer>
+         <Footer className="footerpage">
+         <h2> Like me: www.facebook.com/blah   <Icon className="icons"type="facebook"/>/
+          Follow me: www.twitter.com/blah  <Icon className="icons" type="twitter"/>/
+          Add me: @randomscreenname <Icon type="instagram"/></h2>
+          </Footer>
          </Layout>
             </div>
         )
