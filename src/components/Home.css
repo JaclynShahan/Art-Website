@@ -25,3 +25,17 @@
   background-repeat: no-repeat;
  
   }
+
+  .contentbox{
+      width: 100vw;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+      align-items: center;
+      align-content: stretch;
+}
+
+.cardspace {
+    margin: 15px;
+}
