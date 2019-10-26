@@ -25,23 +25,18 @@
 .navbar {
   color: white;
   font-size: calc(10px + 2vmin);
-  height: 8vh;
+  height: 3vh;
   margin: 15px;
  
   
 }
 
 .links {
-  color: white;
-  
+  color: whitesmoke;
+  font-size: 20px;
 }
 
-.contents {
-  height: 90vh;
-  width: 100vw;
-  background-color: black;
-  opacity: 0.5;
-}
+
 .cart {
   float: right;
 }
@@ -68,7 +63,7 @@ background-repeat: no-repeat;
   font-size: 40px;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bolder;
-  margin-left: 30%;
+  margin-left: 35%;
   margin-top: 15px;  
 }
 

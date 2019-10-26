@@ -10,9 +10,9 @@ import Home from './components/Home';
 export default (
     <Provider store={store}>
         <Switch>
-            <Route path="/login" component={Login}/>
-            <Route path="/cart" component={Cart}/>
-            <Route exact path="/" component={Home}/>
+            <Route path='/login' component={Login}/>
+            <Route path='/cart' component={Cart}/>
+            <Route exact path='/' component={Home}/>
         </Switch>
     </Provider>
 )
