@@ -3,8 +3,8 @@ const initialState = {
     description: "",
     size: "",
     price: "",
-    art: [],
-    showModal: false
+    artList: [],
+    setShowModal: false
 }
 
 export default function reducer (state = initialState, action) {
@@ -19,6 +19,8 @@ export default function reducer (state = initialState, action) {
         return {...tempState, size: action.payload}
         case "NEW_PRICE" :
         return {...tempState, price: action.payload}
+        case "SHOW_NEW_MODAL" :
+        return {...tempState, setShowModal: action.payload}
     }
     return tempState
 }

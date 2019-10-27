@@ -10,6 +10,25 @@ app.use(express.json());
 
 const port = 3110
 
+const getArt = (req, res) => {
+    const dbInstance = req.app.get("db")
+    dbInstance.getArt().then((resp) => res.status(200).send(resp))
+}
+app.get(`/api/getArt`, (req, res) => {
+    getArt(req, res)
+})
+
+app.post(`/api/createArt`, (req, res) => {
+    const {title, description, size, price} = req.body
+    console.log("Request received", title, description, size, price)
+    console.log(req.body)
+    const dbInstance = req.app.get("db")
+    dbInstance.createArt(title, description, size, price)
+    .then(() => {
+        getArt(req, res)
+    })
+})
+
 massive(process.env.connectionString).then((db) => {
     app.set("db", db)
     app.listen(3110, () => {
