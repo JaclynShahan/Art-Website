@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 //import router from './router';
 //import {Link} from 'react-router-dom';
 import './Home.css';
-import {Layout, Icon, Card} from 'antd';
+import {Layout, Icon, Card, Button, Modal} from 'antd';
 
 class Home extends Component {
     constructor() {
@@ -20,14 +20,29 @@ class Home extends Component {
             <div>
                 <Layout>
          <Content className="contents contentbox">
+         <Button onClick={() => this.props.showModalHandler(true)}>Add New</Button>
+        <Modal
+        onOk={this.onSave}
+        okText="Save"
+        title="Add New Art"
+        onCancel={() => this.props.showModalHandler(false)}
+        visible={() => this.props.newArt.showModal}
+        >
+        <Input 
         
+        />
+        <Input />
+        <Input />
+        <Input />
+
+        </Modal>
          <Card
          className="cardspace"
          hoverable
          style={{width: 140}}
          cover={<img src="https://www.keithmillsartist.com/uploads/1/0/7/1/10719910/between-the-rivers_orig.jpg"/>}
          >
-            <Meta title="My Awesome Painting" description="$25.00"/>
+            <Meta title="My Awesome Painting" description="$25.00" />
          </Card>
          <Card
          className="cardspace"
@@ -83,4 +98,42 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapStateToProps = state => {
+    console.log("state:", state)
+    return state
+};
+const mapDispatchToProps = dispatch => ({
+    showModalHandler(val) {
+        dispatch({
+            type: "SHOW_MODAL",
+            payload: val
+        })
+    },
+    titleHandler(e) {
+        dispatch({
+            type: "NEW_TITLE",
+            payload: e.target.value
+        })
+    },
+    descriptionHandler(e) {
+        dispatch({
+            type: "NEW_DESCRIPTION",
+            payload: e.target.value
+        })
+    },
+    sizeHandler(e) {
+        dispatch({
+            type: "NEW_SIZE",
+            payload: e.target.value
+        })
+    },
+    priceHandler(e) {
+        dispatch({
+            tyoe: "NEW_PRICE",
+            payload: e.target.value
+        })
+    }
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
