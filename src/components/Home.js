@@ -21,6 +21,11 @@ class Home extends Component {
     })
   }
 
+  artData = () => {
+      console.log("artData function: ", this.props.newArt.artList)
+      return this.props.newArt.artList
+  }
+
   render () {
     const { Header, Footer, Sider, Content } = Layout
     const { Meta } = Card
@@ -28,10 +33,26 @@ class Home extends Component {
     return (
       <div>
         <Layout>
-          <Content className='contents'>
+          
+          
+          <Content className="contentbox">
+          {this.artData().map(art => (
+              <ArtCards 
+              key={art.id}
+              id={art.id}
+              title={art.title}
+              description={this.description}
+              size={this.size}
+              price={this.price}
+              art={art}
+
+              />
+          ))}   
+          </Content>
+         
             <ArtCards />
             <NewArtModal />
-          </Content>
+          
           <Footer className='footerpage'>
             <h2>
               {' '}

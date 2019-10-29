@@ -8,13 +8,15 @@ class NewArtModal extends Component {
     super()
     this.state = {}
   }
-  onSave = () => {
+  onSave = (e) => {
     Axios.post(`/api/createArt`, {
       title: this.props.newArt.title,
       description: this.props.newArt.description,
       size: this.props.newArt.size,
       price: this.props.newArt.price
     }).then(resp => {
+        e.preventDefault()
+        this.props.showModalHandler(false)
       this.props.setArtList(resp.data)
       console.log('Response:', resp)
     })

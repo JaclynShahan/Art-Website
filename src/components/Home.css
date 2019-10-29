@@ -1,8 +1,8 @@
 .contents {
     height: 90vh;
     width: 100vw;
-    background-color: rgb(230, 76, 49);
-    opacity: 0.5;
+    background-color: whitesmoke;
+
   }
 
   h2 {
@@ -27,16 +27,25 @@
   }
 
   .contentbox{
-      width: 100vw;
+      width: 90vw;
       display: flex;
       flex-direction: row;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       justify-content: space-around;
       align-items: center;
       align-content: stretch;
+      
      
 }
 
 .cardspace {
-    margin: 15px;
+    margin: 10px;
+    border: 1px solid black;
+    
+  
+}
+
+img {
+    height: 150px;
+    width: 200px;
 }
