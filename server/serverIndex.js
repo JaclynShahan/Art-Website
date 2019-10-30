@@ -29,6 +29,11 @@ app.post(`/api/createArt`, (req, res) => {
     })
 })
 
+app.delete(`/api/deleteArt/:id`, (req, res) => {
+    const dbInstance = req.app.get("db")
+    dbInstance.deleteArt(req.params.id).then((resp) => getArt(req, res))
+})
+
 massive(process.env.connectionString).then((db) => {
     app.set("db", db)
     app.listen(3110, () => {

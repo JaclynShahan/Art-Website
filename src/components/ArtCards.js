@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import { connect } from 'react-redux'
-import { Layout, Card, Icon } from 'antd'
+import { Layout, Card, Icon, Button } from 'antd'
 
 class ArtCards extends Component {
   constructor () {
     super()
     this.state = {}
+  }
+
+  onDelete = id => {
+    Axios.delete(`/api/deleteArt/{$id}`).then(resp => {
+      console.log(resp)
+      this.props.setArtList(resp.data)
+    })
   }
 
   render () {
@@ -20,15 +27,20 @@ class ArtCards extends Component {
               key={this.props.id}
               className='cardspace'
               hoverable
-              style={{ width: 200, height: 300 }}
+              style={{ width: 250, height: 380 }}
               title={
                 <img src='https://www.keithmillsartist.com/uploads/1/0/7/1/10719910/between-the-rivers_orig.jpg' />
               }
             >
-            <span>{this.props.title}</span>
-            <span>{this.props.description}</span>
-            <span>{this.props.size}</span>
-            <span>{this.props.price}</span>
+            
+            <h3>{this.props.title}</h3>
+            <p>Description: {this.props.description}</p>
+            <p>Dimensions: {this.props.size}</p>
+            <p>Price: {this.props.price}</p>
+            <div>
+            <Button onClick={() => this.onDelete(this.props.id)} className="editbutton"><Icon type="edit"/></Button>
+            <Button className="deletebutton"><Icon type="delete"/></Button>
+            </div>
               {/* <Meta
                 title={this.props.title}
                 description={this.props.description}

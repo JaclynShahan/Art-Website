@@ -41,16 +41,16 @@ class Home extends Component {
               key={art.id}
               id={art.id}
               title={art.title}
-              description={this.description}
-              size={this.size}
-              price={this.price}
+              description={art.description}
+              size={art.size}
+              price={art.price}
               art={art}
 
               />
           ))}   
           </Content>
          
-            <ArtCards />
+           
             <NewArtModal />
           
           <Footer className='footerpage'>

@@ -49,3 +49,13 @@ img {
     height: 150px;
     width: 200px;
 }
+
+.editbutton{
+    float: right;
+   
+}
+
+.deletebutton {
+    float: right;
+    margin-right: 5px;
+}
