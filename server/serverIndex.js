@@ -31,6 +31,7 @@ app.post(`/api/createArt`, (req, res) => {
 
 app.delete(`/api/deleteArt/:id`, (req, res) => {
     const dbInstance = req.app.get("db")
+    console.log("Deleted", id)
     dbInstance.deleteArt(req.params.id).then((resp) => getArt(req, res))
 })
 

@@ -25,6 +25,12 @@ class Home extends Component {
       console.log("artData function: ", this.props.newArt.artList)
       return this.props.newArt.artList
   }
+  onDelete = id => {
+    Axios.delete(`/api/deleteArt/${id}`).then(resp => {
+      console.log(resp)
+      this.props.setArtList(resp.data)
+    })
+  }
 
   render () {
     const { Header, Footer, Sider, Content } = Layout
@@ -55,8 +61,8 @@ class Home extends Component {
           
           <Footer className='footerpage'>
             <h2>
-              {' '}
-              Like me: www.facebook.com/blah{' '}
+             
+              Like me: www.facebook.com/blah
               <Icon className='icons' type='facebook' />/ Follow me:
               www.twitter.com/blah <Icon className='icons' type='twitter' />/
               Add me: @randomscreenname <Icon type='instagram' />

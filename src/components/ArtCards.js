@@ -9,12 +9,7 @@ class ArtCards extends Component {
     this.state = {}
   }
 
-  onDelete = id => {
-    Axios.delete(`/api/deleteArt/{$id}`).then(resp => {
-      console.log(resp)
-      this.props.setArtList(resp.data)
-    })
-  }
+ 
 
   render () {
     const { Header, Footer, Sider, Content } = Layout
@@ -38,7 +33,7 @@ class ArtCards extends Component {
             <p>Dimensions: {this.props.size}</p>
             <p>Price: {this.props.price}</p>
             <div>
-            <Button onClick={() => this.onDelete(this.props.id)} className="editbutton"><Icon type="edit"/></Button>
+            <Button onClick={() => this.props.onDelete(this.props.id)} className="editbutton"><Icon type="edit"/></Button>
             <Button className="deletebutton"><Icon type="delete"/></Button>
             </div>
               {/* <Meta

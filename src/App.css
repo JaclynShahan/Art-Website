@@ -39,6 +39,7 @@
 
 .cart {
   float: right;
+  margin-right: 15px;
 }
 
 .login {
