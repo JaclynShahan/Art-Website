@@ -3,7 +3,7 @@
     margin: 5% auto 15% auto; 
     border: 1px solid #888;
     width: 50%;
-    height: 55vh;
+    height: 60vh;
 }
 
 .form {
@@ -50,3 +50,10 @@
     font: 15px;
   }
 
+  .avatar-uploader > .ant-upload {
+    width: 128px;
+    height: 128px;
+    border-radius: 20px;
+    margin-left: 40%;
+    margin-top: 15px;
+  }
