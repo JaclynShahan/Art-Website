@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 // import router from './router';
 import { Form, Icon, Input, Button, Checkbox, Avatar, Upload, message } from 'antd'
 import './Login.css'
+import {connect} from 'react-redux';
 
 class Login extends Component {
   constructor() {
@@ -17,11 +18,12 @@ class Login extends Component {
   
     return (
       <div>
-          {/* <div className='imgcontainer'>
-            <Avatar size={74} icon='user' />
-          </div> */}
-          <form className='form-content'>
           
+          <form className='form-content'>
+          <div className='imgcontainer'>
+            <Avatar size={80} src={this.props.newArt.imageUrl} />
+          </div>
+        
           <div className='container'>
             <label>Username:</label>
             <Input type='text' placeholder='Enter Username...' />
@@ -52,4 +54,17 @@ class Login extends Component {
   }
 }
 
-export default Login
+
+const mapStateToProps = state => {
+  console.log("state:", state)
+  return state
+}
+const mapDispatchToProps = dispatch => ({
+  imageHandler (e) {
+    dispatch({
+      type: 'NEW_IMAGE',
+      payload: e.target.value
+    })
+  }
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -50,6 +50,7 @@ class Home extends Component {
               description={art.description}
               size={art.size}
               price={art.price}
+              imageUrl={art.imageUrl}
               art={art}
 
               />

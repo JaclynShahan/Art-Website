@@ -10,6 +10,7 @@ class NewArtModal extends Component {
   }
   onSave = (e) => {
     Axios.post(`/api/createArt`, {
+      image: this.props.imageUrl,
       title: this.props.newArt.title,
       description: this.props.newArt.description,
       size: this.props.newArt.size,
@@ -35,6 +36,11 @@ class NewArtModal extends Component {
           onCancel={() => this.props.showModalHandler(false)}
           visible={this.props.newArt.setShowModal}
         >
+        <Input 
+        onChange={e => this.props.imageHandler(e)}
+        placeholder='Image'
+        value={this.props.newArt.imageUrl}
+        />
           <Input
             onChange={e => this.props.titleHandler(e)}
             placeholder='Title'
@@ -100,6 +106,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: 'ART_LIST',
       payload: arr
+    })
+  },
+  imageHandler (e) {
+    dispatch({
+      type: 'NEW_IMAGE',
+      payload: e.target.value
     })
   }
 })

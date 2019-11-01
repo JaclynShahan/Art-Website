@@ -14,10 +14,14 @@ function App (props) {
                 <Link to='/login' className="links login">Login <Icon type="user"/> </Link> 
                 <Link to='/' className="links homelink">Gallery <Icon type="shop"/></Link>
                 <Link to='/cart' className="links cart">
+
                 Cart
                 <Icon type="shopping-cart"/>
-                <Badge count={0} showZero>
+                <Badge style={{ height: "18px" , width: "1px", marginTop: "10px"}} count={0} showZero>
+              
                 </Badge>
+              
+                
                 </Link>
                 <h1 className="logotitle">***MY COOL LOGO***</h1>
          </div>

@@ -20,7 +20,7 @@ app.get(`/api/getArt`, (req, res) => {
 
 app.post(`/api/createArt`, (req, res) => {
     const {title, description, size, price} = req.body
-    console.log("Request received", title, description, size, price)
+    console.log("Request received", imageUrl, title, description, size, price)
     console.log(req.body)
     const dbInstance = req.app.get("db")
     dbInstance.createArt(title, description, size, price)

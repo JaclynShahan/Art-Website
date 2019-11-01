@@ -50,9 +50,4 @@
     font: 15px;
   }
 
-  .avatar-uploader > .ant-upload {
-    width: 128px;
-    height: 128px;
-    border-radius: 20px;
-    margin-left: 55px;
-  }
+ 

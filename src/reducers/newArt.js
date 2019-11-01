@@ -3,6 +3,7 @@ const initialState = {
     description: "",
     size: "",
     price: "",
+    imageUrl: "",
     artList: [],
     setShowModal: false
 }
@@ -23,6 +24,8 @@ export default function reducer (state = initialState, action) {
         return {...tempState, setShowModal: action.payload}
         case "ART_LIST" :
         return {...tempState, artList: action.payload}
+        case "NEW_IMAGE" :
+        return {...tempState, imageUrl: action.payload}
     }
     return tempState
 }
