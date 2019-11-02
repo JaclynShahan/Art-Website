@@ -68,5 +68,10 @@ img {
 .modalInputs {
     margin: 5px;
     border-radius: 20px;
-    width: 60%;
+    width: 100%;
 }
+
+.tableRow {
+    width: 800%;
+}
+
