@@ -36,7 +36,8 @@ class ArtCards extends Component {
             <p>Description: {this.props.description}</p>
             <p>Dimensions: {this.props.size}</p>
             <p>Price: {this.props.price}</p>
-            <div>
+            <div className="buttonPadding">
+            <Button><Icon type="shopping"/>Add to Cart</Button>
             <Button className="editbutton"><Icon type="edit"/></Button>
             <Button onClick={() => this.props.onDelete(this.props.id)} className="deletebutton"><Icon type="delete"/></Button>
             </div>
