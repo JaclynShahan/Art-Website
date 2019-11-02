@@ -30,8 +30,8 @@ app.post(`/api/createArt`, (req, res) => {
 })
 
 app.delete(`/api/deleteArt/:id`, (req, res) => {
-    const dbInstance = req.app.get("db")
-    console.log("Deleted", id)
+    const dbInstance = req.app.get("db")//dbInstance is sql connection instance
+    console.log("Deleted", req.params.id) //this id is coming in on my request in my parameters as the id property
     dbInstance.deleteArt(req.params.id).then((resp) => getArt(req, res))
 })
 

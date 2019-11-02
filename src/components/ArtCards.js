@@ -14,7 +14,7 @@ class ArtCards extends Component {
 
 
   render () {
-
+    
     const { imageUrl } = this.state;
     const { Header, Footer, Sider, Content } = Layout
     const { Meta } = Card
@@ -37,8 +37,8 @@ class ArtCards extends Component {
             <p>Dimensions: {this.props.size}</p>
             <p>Price: {this.props.price}</p>
             <div>
-            <Button onClick={() => this.props.onDelete(this.props.id)} className="editbutton"><Icon type="edit"/></Button>
-            <Button className="deletebutton"><Icon type="delete"/></Button>
+            <Button className="editbutton"><Icon type="edit"/></Button>
+            <Button onClick={() => this.props.onDelete(this.props.id)} className="deletebutton"><Icon type="delete"/></Button>
             </div>
               {/* <Meta
                 title={this.props.title}

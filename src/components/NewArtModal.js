@@ -36,27 +36,41 @@ class NewArtModal extends Component {
           onCancel={() => this.props.showModalHandler(false)}
           visible={this.props.newArt.setShowModal}
         >
+        <span>Image URL:</span>
         <Input 
+        className="modalInputs"
         onChange={e => this.props.imageHandler(e)}
-        placeholder='Image'
+        placeholder='Image URL'
         value={this.props.newArt.imageUrl}
         />
+        <br></br>
+        <span>Title: </span>
           <Input
+          className="modalInputs"
             onChange={e => this.props.titleHandler(e)}
             placeholder='Title'
             value={this.props.newArt.title}
           />
+          <br></br>
+          <span>Description:</span>
           <Input
+          className="modalInputs"
             onChange={e => this.props.descriptionHandler(e)}
             placeholder='Description'
             value={this.props.newArt.description}
           />
+          <br></br>
+          <span>Size:</span>
           <Input
+          className="modalInputs"
             onChange={e => this.props.sizeHandler(e)}
             placeholder='Size'
             value={this.props.newArt.size}
           />
+          <br></br>
+          <span>Price:</span>
           <Input
+          className="modalInputs"
             onChange={e => this.props.priceHandler(e)}
             placeholder='Price'
             value={this.props.newArt.price}

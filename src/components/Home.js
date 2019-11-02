@@ -26,7 +26,9 @@ class Home extends Component {
       return this.props.newArt.artList
   }
   onDelete = id => {
+    console.log(id)
     Axios.delete(`/api/deleteArt/${id}`).then(resp => {
+      console.log("deleted")
       console.log(resp)
       this.props.setArtList(resp.data)
     })
@@ -52,6 +54,7 @@ class Home extends Component {
               price={art.price}
               imageUrl={art.imageUrl}
               art={art}
+              onDelete={this.onDelete}
 
               />
           ))}   
@@ -63,10 +66,10 @@ class Home extends Component {
           <Footer className='footerpage'>
             <h2>
              
-              Like me: www.facebook.com/blah
-              <Icon className='icons' type='facebook' />/ Follow me:
-              www.twitter.com/blah <Icon className='icons' type='twitter' />/
-              Add me: @randomscreenname <Icon type='instagram' />
+              Like me: <a>www.facebook.com/blah</a> 
+               <Icon className='icons' type='facebook' />/ Follow me:
+              <a>www.twitter.com/blah</a> <Icon className='icons' type='twitter' />/
+              Add me: <a>@randomscreenname</a> <Icon type='instagram' />
             </h2>
           </Footer>
         </Layout>

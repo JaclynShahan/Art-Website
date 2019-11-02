@@ -65,3 +65,8 @@ img {
     width: 90vw;
     height: 90vh;
 }
+.modalInputs {
+    margin: 5px;
+    border-radius: 20px;
+    width: 60%;
+}
