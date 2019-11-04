@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import './Home.css'
 import { Layout, Icon, Card, Button, Modal } from 'antd'
 import NewArtModal from './NewArtModal'
+import Contact from './Contact'
 import Axios from 'axios'
 import { connect } from 'react-redux'
 import ArtCards from './ArtCards'
@@ -64,8 +65,10 @@ class Home extends Component {
             <NewArtModal />
           
           <Footer className='footerpage'>
+          <div className="email">
+            <Contact />
+          </div>
             <h2>
-             
               Like me: <a>www.facebook.com/blah</a> 
                <Icon className='icons' type='facebook' />/ Follow me:
               <a>www.twitter.com/blah</a> <Icon className='icons' type='twitter' />/

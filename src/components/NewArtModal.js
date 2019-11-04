@@ -6,11 +6,13 @@ import { connect } from 'react-redux'
 class NewArtModal extends Component {
   constructor () {
     super()
-    this.state = {}
+    this.state = {
+     
+    }
   }
   onSave = (e) => {
     Axios.post(`/api/createArt`, {
-      image: this.props.imageUrl,
+      image: this.props.newArt.imageUrl,
       title: this.props.newArt.title,
       description: this.props.newArt.description,
       size: this.props.newArt.size,
