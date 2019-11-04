@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import { Form, Icon, Input, Button, Checkbox, Avatar, Upload, message } from 'antd'
 import './Login.css'
 import {connect} from 'react-redux';
+import Axios from 'axios';
 
 class Login extends Component {
   constructor() {
@@ -13,9 +14,18 @@ class Login extends Component {
     }
   }
 
+  authRequest = () => {
+    Axios.post(`/api/verifyUser`, {
+      username: this.props.login.username,
+      password: this.props.login.password
+    }).then(resp => {
+      console.log(resp.data)
+      this.props.setAuthentication(resp.data)
+    })
+  }
   
   render () {
-  
+  console.log(this.props.login)
     return (
       <div>
           
@@ -26,12 +36,20 @@ class Login extends Component {
         
           <div className='container'>
             <label>Username:</label>
-            <Input type='text' placeholder='Enter Username...' />
+            <Input
+             type='text' 
+             placeholder='Enter Username...' 
+            onChange={e => this.props.setUsername(e)}
+            />
             <label>Password:</label>
-            <Input type='password' placeholder='Enter Password...' />
+            <Input
+             type='password' 
+             placeholder='Enter Password...' 
+             onChange={e => this.props.setPassword(e)}
+             />
             <div className='container'>
               <br />
-              <Button type='submit'>Login</Button>
+              <Button onClick={this.authRequest} type='submit'>Login</Button>
               <span className='signup'>OR</span>
               <span className='signup'>
                 <a href='a'>Create Account</a>
@@ -62,8 +80,26 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   imageHandler (e) {
     dispatch({
-      type: 'NEW_IMAGE',
+      type: "NEW_IMAGE",
       payload: e.target.value
+    })
+  },
+  setUsername (e) {
+    dispatch({
+      type: "SET_USERNAME",
+      payload: e.target.value
+    })
+  },
+  setPassword (e) {
+    dispatch({
+      type: "SET_PASSWORD",
+      payload: e.target.value
+    })
+  },
+  setAuthentication(val) {
+    dispatch({
+      type: "USER_AUTH",
+      payload: val
     })
   }
 })

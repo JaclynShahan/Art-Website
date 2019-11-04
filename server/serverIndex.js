@@ -28,7 +28,17 @@ app.post(`/api/createArt`, (req, res) => {
         getArt(req, res)
     })
 })
-
+app.post(`/api/verifyUser`, (req, res) => {
+    console.log("request received")
+    const {username, password} = req.body
+    console.log(process.env.pin, process.env.user)
+    console.log(username, password)
+    if (username == process.env.user && password == process.env.pin) {
+        res.status(200).send(true)
+    } else {
+        res.status(200).send(false)
+    }
+})
 app.delete(`/api/deleteArt/:id`, (req, res) => {
     const dbInstance = req.app.get("db")//dbInstance is sql connection instance
     console.log("Deleted", req.params.id) //this id is coming in on my request in my parameters as the id property

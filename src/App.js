@@ -5,14 +5,18 @@ import Login from './components/Login.js';
 import {Icon, Badge} from 'antd';
 import router from './router';
 import {Link} from 'react-router-dom';
+import store from './store';
 
 function App (props) {
   
     return(
       <div>
          <div className="applogo">
+   
+          
+        
                 <Link to='/login' className="links login">Login <Icon type="user"/> </Link> 
-                <Link to='/' className="links homelink">Gallery <Icon type="shop"/></Link>
+                <Link to='/' className="links homelink">Gallery <Icon type="shop"/></Link> 
                 <Link to='/cart' className="links cart">
 
                 Cart
