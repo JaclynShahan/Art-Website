@@ -82,3 +82,10 @@ img {
 .email {
     margin-left: 30%;
 }
+
+.contactSpan {
+    font-size: 20px;
+      font-family: 'Courier New', Courier, monospace;
+      color: whitesmoke;
+      font-weight: bold;
+}

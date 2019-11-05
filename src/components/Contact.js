@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Modal, Input, Button} from 'antd';
+import {Modal, Input, Button, Icon} from 'antd';
 import {connect} from 'react-redux';
 import Axios from 'axios';
 
@@ -27,13 +27,13 @@ class Contact extends Component {
         const {TextArea} = Input
         return(
             <div>
-            <Button>Contact Me</Button>
+            <span className="contactSpan">Leave any feedback/comments: </span><Icon onClick={() => this.props.contactModalHandler(true)} style={{fontSize: '25px', color: 'blue' }} type="mail"/>
             <Modal
             onOk={this.onSend}
             okText="Send"
             title="Leave me a comment/feedback"
-            onCancel={this.props.contactModalHandler(false)}
-            visible={this.props.login.showContactModal}
+            onCancel={() => this.props.contactModalHandler(false)}
+            visible={this.props.contact.showContactModal}
 
             >
             <Input 
@@ -52,7 +52,7 @@ class Contact extends Component {
             value={this.props.contact.message}
             onChange={(e) => this.props.contactMessage(e)}
             />
-            <Button>Submit</Button>
+           
 
             </Modal>
             </div>
