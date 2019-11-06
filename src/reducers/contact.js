@@ -2,7 +2,8 @@ const initialState = {
     name: "",
     email: "",
     message: "",
-    showContactModal: false
+    showContactModal: false,
+    clearFields: ""
 }
 
 export default function reducer(state = initialState, action) {
@@ -17,7 +18,8 @@ export default function reducer(state = initialState, action) {
         return {...tempState, message: action.payload}
         case "CONTACT_MODAL" :
         return {...tempState, showContactModal: action.payload}
-
+        case "CLEAR_FIELDS" :
+        return {...tempState, clearFields: action.payload}
     }
     return tempState
 }

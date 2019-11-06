@@ -19,15 +19,18 @@ class Contact extends Component {
         }).then(resp => {
             e.preventDefault()
             this.props.contactModalHandler(false)
+            this.props.clearFields()
             console.log(resp)
         })
     }
+
+
 
     render() {
         const {TextArea} = Input
         return(
             <div>
-            <span className="contactSpan">Leave any feedback/comments: </span><Icon onClick={() => this.props.contactModalHandler(true)} style={{fontSize: '25px', color: 'blue' }} type="mail"/>
+            <span className="contactSpan">Leave any feedback/comments: </span><Icon onClick={() => this.props.contactModalHandler(true)} style={{fontSize: '25px', color: 'whitesmoke' }} type="mail"/>
             <Modal
             onOk={this.onSend}
             okText="Send"
@@ -87,6 +90,12 @@ const mapDispatchToProps = dispatch => ({
         dispatch({
             type: "CONTACT_MESSAGE",
             payload: e.target.value
+        })
+    },
+    clearFields () {
+        dispatch({
+            type: "CLEAR_FIELDS",
+            payload: ""
         })
     }
 })

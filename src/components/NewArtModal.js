@@ -21,6 +21,7 @@ class NewArtModal extends Component {
         e.preventDefault()
         this.props.showModalHandler(false)
       this.props.setArtList(resp.data)
+      this.props.clearInputs()
       console.log('Response:', resp)
     })
   }
@@ -150,6 +151,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: 'NEW_IMAGE',
       payload: e.target.value
+    })
+  },
+  clearInputs () {
+    dispatch({
+      type: 'CLEAR_INPUTS',
+      payload: ""
     })
   }
 })
