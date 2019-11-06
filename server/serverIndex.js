@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const massive = require("massive");
+const {json} = require("body-parser");
 require("dotenv").config()
 
 const app = express();
@@ -10,6 +11,12 @@ app.use(express.json());
 
 const port = 3110
 
+const send = require('gmail-send')({
+    user: process.env.username,
+    pass: process.env.password,
+    to: 'shahanjaclyn@gmail.com'
+  })
+
 const getArt = (req, res) => {
     const dbInstance = req.app.get("db")
     dbInstance.getArt().then((resp) => res.status(200).send(resp))
@@ -18,6 +25,19 @@ app.get(`/api/getArt`, (req, res) => {
     getArt(req, res)
 })
 
+app.post(`/api/sendMessage`, (req, res) => {
+    send(
+    {
+        subject: 'MESSAGE FROM: ' + req.body.name + ' ' + req.body.email,
+        text: `Name: ${req.body.name}\nEmail: ${req.body.email}\nMessage: ${req.body.message}`
+    },
+    function (err, res) {
+        console.log('* ERROR send() callback returned: err:', err, '; res:', res)
+    }
+    )
+    console.log("Working")
+    res.status(200).json((message = 'working'))
+})
 app.post(`/api/createArt`, (req, res) => {
     const {title, description, size, price} = req.body
     console.log("Request received", imageUrl, title, description, size, price)
