@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import { connect } from 'react-redux'
-import { Layout, Card, Icon, Button, Upload, message, Popconfirm } from 'antd'
+import { Layout, Card, Icon, Button, Modal, message, Popconfirm } from 'antd'
+import EditCards from './EditCards';
 
 class ArtCards extends Component {
   constructor () {
@@ -11,15 +12,15 @@ class ArtCards extends Component {
     }
   }
 
-confirm = (e) => {
-  console.log(e)
-  message.error('Click on No')
-}
+// confirm = (e) => {
+//   console.log(e)
+//   message.error('Click on No')
+// }
 
-cancel = (e) => {
-  console.log(e)
-  message.error('Click on No')
-}
+// cancel = (e) => {
+//   console.log(e)
+//   message.error('Click on No')
+// }
 
 openEditModal = () => {
   const {card} = this.props
@@ -70,9 +71,9 @@ onEditCard = (id, img, ttl, desc, sz, prc) => {
             className="editbutton"><Icon type="edit"/>
             </Button>
             <Modal
-            okText=""
+            okText=''
             title="Edit Card"
-            onCancel={this.props.setEditModal(false)}
+           // onCancel={this.props.setEditModal(false)}
             visible={this.props.newArt.editModal}
             footer={[]}
             >
@@ -80,15 +81,15 @@ onEditCard = (id, img, ttl, desc, sz, prc) => {
               onSave={this.onEditCard}
               />
             </Modal>
-            <Popconfirm
+            {/* <Popconfirm
             title="Are you sure you want to delete?"
             onConfirm={(e) => this.confirm(e)}
             onCancel={(e) => this.cancel(e)}
             okText="Yes"
             cancelText="No"
-            >
+            > */}
             <Button onClick={() => this.props.onDelete(this.props.id)} className="deletebutton"><Icon type="delete"/></Button>
-            </Popconfirm>
+            {/* </Popconfirm> */}
             </div>
               {/* <Meta
                 title={this.props.title}
