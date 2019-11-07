@@ -18,8 +18,8 @@ class NewArtModal extends Component {
       size: this.props.newArt.size,
       price: this.props.newArt.price
     }).then(resp => {
-        e.preventDefault()
-        this.props.showModalHandler(false)
+      e.preventDefault()
+      this.props.showModalHandler(false)
       this.props.setArtList(resp.data)
       this.props.clearInputs()
       console.log('Response:', resp)

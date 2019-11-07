@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import { connect } from 'react-redux'
-import { Layout, Card, Icon, Button, Upload, message } from 'antd'
+import { Layout, Card, Icon, Button, Upload, message, Popconfirm } from 'antd'
 
 class ArtCards extends Component {
   constructor () {
@@ -11,8 +11,35 @@ class ArtCards extends Component {
     }
   }
 
+confirm = (e) => {
+  console.log(e)
+  message.error('Click on No')
+}
 
+cancel = (e) => {
+  console.log(e)
+  message.error('Click on No')
+}
 
+openEditModal = () => {
+  const {card} = this.props
+  this.props.setInspectedCard(card)
+  this.props.setEditModal(true)
+}
+onEditCard = (id, img, ttl, desc, sz, prc) => {
+  Axios.put(`/api/updateCard`, {
+    id: id,
+    image: img,
+    title: ttl,
+    description: desc,
+    size: sz,
+    price: prc
+  }).then(resp => {
+    console.log(resp)
+    this.props.setEditModal(false)
+    this.props.setArtList(resp.data)
+  })
+}
   render () {
     
     const { imageUrl } = this.state;
@@ -38,8 +65,30 @@ class ArtCards extends Component {
             <p>Price: {this.props.price}</p>
             <div className="buttonPadding">
             <Button><Icon type="shopping"/>Add to Cart</Button>
-            <Button className="editbutton"><Icon type="edit"/></Button>
+            <Button 
+            onClick={() => this.openEditModal()}
+            className="editbutton"><Icon type="edit"/>
+            </Button>
+            <Modal
+            okText=""
+            title="Edit Card"
+            onCancel={this.props.setEditModal(false)}
+            visible={this.props.newArt.editModal}
+            footer={[]}
+            >
+              <EditCards 
+              onSave={this.onEditCard}
+              />
+            </Modal>
+            <Popconfirm
+            title="Are you sure you want to delete?"
+            onConfirm={(e) => this.confirm(e)}
+            onCancel={(e) => this.cancel(e)}
+            okText="Yes"
+            cancelText="No"
+            >
             <Button onClick={() => this.props.onDelete(this.props.id)} className="deletebutton"><Icon type="delete"/></Button>
+            </Popconfirm>
             </div>
               {/* <Meta
                 title={this.props.title}
@@ -63,6 +112,18 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: 'ART_LIST',
       payload: arr
+    })
+  },
+  setEditModal (val) {
+    dispatch({
+      type: 'EDIT_MODAL',
+      payload: val
+    })
+  },
+  setInspectedCard (card) {
+    dispatch({
+      type: 'SET_EDIT_CARD',
+      payload: card
     })
   }
 })
