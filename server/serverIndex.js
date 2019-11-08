@@ -59,6 +59,16 @@ app.post(`/api/verifyUser`, (req, res) => {
         res.status(200).send(false)
     }
 })
+app.put(`/api/updateCard`, (req, res) => {
+    const {id, title, description, size, price, imageUrl} = req.body
+    console.log(req.body)
+    console.log("Updated", id, title, description, size, price, imageUrl)
+    const dbInstance = req.app.get("db")
+    dbInstance.updateCard(id, title, description, size, price, imageUrl)
+    .then(() => {
+        getArt(req, res)
+    })
+})
 app.delete(`/api/deleteArt/:id`, (req, res) => {
     const dbInstance = req.app.get("db")//dbInstance is sql connection instance
     console.log("Deleted", req.params.id) //this id is coming in on my request in my parameters as the id property

@@ -11,37 +11,52 @@ class EditCards extends Component {
     }
 
     render() {
-        const {id, image, title, description, size, price} = this.props.edit;
+        const {id, imageUrl, title, description, size, price} = this.props.edit;
         
         console.log("Props", this.props)
         return(
             <div>
+                <span>Edit Title:</span>
                 <Input 
-                onChange={(e) => this.props.setEditImage(e)}
-                value={this.props.edit.image}
-                />
-                <Input 
+                className="modalInputs"
                 onChange={(e) => this.props.setEditTitle(e)}
                 value={this.props.edit.title}
                 />
+                <span>Edit Description:</span>
                 <Input 
-                onChange={(e) => this.props.setEditDescripton(e)}
+                className="modalInputs"
+                onChange={(e) => this.props.setEditDescription(e)}
                 value={this.props.edit.description}
                 />
+                <span>Edit Size:</span>
                 <Input 
+                className="modalInputs"
                 onChange={(e) => this.props.setEditSize(e)}
                 value={this.props.edit.size}
                 />
+                <span>Edit Price:</span>
                 <Input 
+                className="modalInputs"
                 onChange={(e) => this.props.setEditPrice(e)}
-                value={this.props.price}
+                value={this.props.edit.price}
+                />
+                <span>Edit Image URL:</span>
+                 <Input 
+                className="modalInputs"
+                onChange={(e) => this.props.setEditImage(e)}
+                value={this.props.edit.imageUrl}
                 />
                 <Button
-                onClick={() => this.props.onEditCard(id, image, title, description, size, price)}
+                onClick={() => this.props.onSave(id, imageUrl, title, description, size, price)}
                 type="primary"
                 >
                 Save
                 </Button>
+                <Button
+                className="cancelButton"
+                onClick={() => this.props.setEditModal(false)}
+                type="primary"
+                >Cancel</Button>
 
             </div>
         )

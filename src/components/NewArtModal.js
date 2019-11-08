@@ -42,16 +42,7 @@ class NewArtModal extends Component {
         <table>
           <tbody>
            
-            <tr>
-        <td><span>Image URL:</span></td>
-        <td><Input 
-        className="modalInputs"
-        onChange={e => this.props.imageHandler(e)}
-        placeholder='Image URL'
-        value={this.props.newArt.imageUrl}
-        />
-        </td>
-        </tr>
+        
         {/* <br></br> header */}
         
         <tr>
@@ -98,6 +89,16 @@ class NewArtModal extends Component {
           />
           </td>
           </tr>
+          <tr>
+        <td><span>Image URL:</span></td>
+        <td><Input 
+        className="modalInputs"
+        onChange={e => this.props.imageHandler(e)}
+        placeholder='Image URL'
+        value={this.props.newArt.imageUrl}
+        />
+        </td>
+        </tr>
           </tbody>
           </table>
         </Modal>

@@ -8,19 +8,19 @@ class ArtCards extends Component {
   constructor () {
     super()
     this.state = {
-      
+      visible: false
     }
   }
 
-// confirm = (e) => {
-//   console.log(e)
-//   message.error('Click on No')
-// }
+confirm = (e) => {
+  console.log(e)
+  message.error('Click on No')
+}
 
-// cancel = (e) => {
-//   console.log(e)
-//   message.error('Click on No')
-// }
+cancel = (e) => {
+  console.log(e)
+  message.error('Click on No')
+}
 
 openEditModal = () => {
   const {card} = this.props
@@ -30,7 +30,7 @@ openEditModal = () => {
 onEditCard = (id, img, ttl, desc, sz, prc) => {
   Axios.put(`/api/updateCard`, {
     id: id,
-    image: img,
+    imageUrl: img,
     title: ttl,
     description: desc,
     size: sz,
@@ -73,7 +73,8 @@ onEditCard = (id, img, ttl, desc, sz, prc) => {
             <Modal
             okText=''
             title="Edit Card"
-           // onCancel={this.props.setEditModal(false)}
+        
+           onCancel={() => this.props.setEditModal(false)}
             visible={this.props.newArt.editModal}
             footer={[]}
             >
@@ -81,15 +82,15 @@ onEditCard = (id, img, ttl, desc, sz, prc) => {
               onSave={this.onEditCard}
               />
             </Modal>
-            {/* <Popconfirm
+            <Popconfirm
             title="Are you sure you want to delete?"
             onConfirm={(e) => this.confirm(e)}
             onCancel={(e) => this.cancel(e)}
             okText="Yes"
             cancelText="No"
-            > */}
+            >
             <Button onClick={() => this.props.onDelete(this.props.id)} className="deletebutton"><Icon type="delete"/></Button>
-            {/* </Popconfirm> */}
+            </Popconfirm>
             </div>
               {/* <Meta
                 title={this.props.title}

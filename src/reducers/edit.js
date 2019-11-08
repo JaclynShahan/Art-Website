@@ -1,6 +1,6 @@
 const initialState = {
     id: "",
-    image: "",
+    imageUrl: "",
     title: "",
     description: "",
     size: "",
@@ -16,7 +16,7 @@ export default function reducer (state = initialState , action) {
         case "EDIT_ID" :
         return {...tempState, id: action.payload}
         case "EDIT_IMAGE" :
-        return {...tempState, image: action.payload}
+        return {...tempState, imageUrl: action.payload}
         case "EDIT_TITLE" :
         return {...tempState, title: action.payload}
         case "EDIT_DESCRIPTION" :
