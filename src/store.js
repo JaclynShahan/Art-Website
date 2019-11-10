@@ -5,13 +5,15 @@ import newArt from './reducers/newArt';
 import login from './reducers/login';
 import contact from './reducers/contact';
 import edit from './reducers/edit';
+import cart from './reducers/cart';
 
 export default createStore(
 combineReducers({
     newArt,
     login,
     contact,
-    edit
+    edit,
+    cart
 
 }),
 applyMiddleware(promiseMiddleware)

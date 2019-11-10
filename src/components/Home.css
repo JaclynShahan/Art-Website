@@ -110,11 +110,33 @@ img {
     
 }
 
-.data {
-    height: 100px;
-    border: 2px solid black;
-}
+
 
 .buttondata {
 float: right;
 }
+
+.data {
+    height: 100px;
+    border: 2px solid black;
+    animation: colorchange 50s; 
+    -webkit-animation: colorchange 50s; /* Chrome and Safari */
+  }
+
+  @keyframes colorchange
+  {
+    0%   {background: rgb(209, 96, 96);}
+    25%  {background: rgb(133, 209, 114);}
+    50%  {background: rgb(98, 98, 163);}
+    75%  {background: rgb(133, 209, 114);}
+    100% {background: rgb(209, 96, 96);}
+  }
+
+  @-webkit-keyframes colorchange 
+  {
+    0%   {background: rgb(209, 96, 96);}
+    25%  {background: rgb(133, 209, 114);}
+    50%  {background: rgb(98, 98, 163);}
+    75%  {background: rgb(133, 209, 114);}
+    100% {background: rgb(209, 96, 96);}
+  }
