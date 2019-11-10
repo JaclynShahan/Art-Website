@@ -92,3 +92,29 @@ img {
 .cancelButton {
     float: right;
 }
+
+.quantitybuttons {
+    width: 5px;
+    height: 20px;
+    padding-left: 4px;
+    margin: 10px;
+    border: none;
+}
+
+.quantitySize {
+    font-size: 15px;
+}
+
+.tableDesign {
+    width: 100vw;
+    
+}
+
+.data {
+    height: 100px;
+    border: 2px solid black;
+}
+
+.buttondata {
+float: right;
+}

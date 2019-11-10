@@ -8,47 +8,46 @@ class Cart extends Component {
     constructor() {
         super()
         this.state = {
+          count: 0,
 
         }
+    }
+    increase = () => {
+      const count = this.state.count + 1;
+      this.setState({count})
+    }
+
+    decline = () => {
+      let count = this.state.count - 1;
+      if (count < 0) {
+        count = 0
+      }
+      this.setState({count})
     }
   
 
     render() {
-        const data = [
-            {
-                title: "title"
-              }
-        ]
+      
         return(
-            <List
-            style={{
-                textAlign: 'left',
-                marginTop: 12,
-                height: 32,
-                lineHeight: '32px',
-              }}
-            itemLayout="horizontal"
-            dataSource={data}
-            renderItem={item => (
-              <List.Item>
-        
-                <List.Item.Meta
-                
-                  avatar={<Avatar size={80} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                  title={<a href="https://ant.design">{item.title}</a>}
-                  description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                />
-                <Button
-                style={{marginRight: '10px'}}
-                >
-                <Icon 
-                
-                type="delete" />
-                </Button>
-              </List.Item>
-            )}
-    
-          />
+          <table className="tableDesign">
+            <tbody >
+              <tr className="data">
+                <td><Avatar></Avatar></td>
+                <td>Art Description</td>
+                <td>Art size</td>
+                <td>Art Price</td>
+                <td><Button className="quantitybuttons" onClick={this.decline}><Icon type="minus" /></Button>
+                <span>{this.state.count}</span>
+                <Button className="quantitybuttons" onClick={this.increase}><Icon type="plus" /></Button>
+                </td>
+                <td>
+                  <th>Total:</th>
+
+                </td>
+                <td className="buttondata"><Button className="quantitybuttons"><Icon type="delete" /></Button> </td>
+              </tr>
+            </tbody>
+          </table>
         )    
 }
 }
