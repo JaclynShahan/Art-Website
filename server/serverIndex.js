@@ -2,13 +2,21 @@ const express = require("express");
 const cors = require("cors");
 const massive = require("massive");
 const {json} = require("body-parser");
+const {session} = require("express-session");
 require("dotenv").config()
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+app.use(
+    session({
+      secret: "this is my super secret",
+      resave: false,
+      saveUninitialized: false
+    })
+  )
+  
 const port = 3110
 
 const send = require('gmail-send')({

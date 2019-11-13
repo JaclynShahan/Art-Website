@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Login from './components/Login.js';
+import Login from './components/LoginComponents/Login.js';
 import {Icon, Badge} from 'antd';
 import router from './router';
 import {Link} from 'react-router-dom';
