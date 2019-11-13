@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 //import {Link} from 'react-router-dom';
 //import router from './router'
 import {List, Avatar, Icon, Button} from 'antd';
+import Axios from 'axios';
+import {connect} from 'react-redux'
 
 
 class Cart extends Component {
@@ -9,6 +11,7 @@ class Cart extends Component {
         super()
         this.state = {
           count: 0,
+          cartArray: []
 
         }
     }
@@ -24,7 +27,22 @@ class Cart extends Component {
       }
       this.setState({count})
     }
+    updateCartArray(cartArray) {
+      this.setState({cartArray})
+    }
   
+    //use sessions for this with node since only one user
+    addCart = (id, items) => {
+      const cartList = items
+      cartList.push(this.props.newArt.id)
+      Axios.post(`/api/cartList/${id}`, {
+        cartArr: cartList
+      }).then(resp => {
+        console.log(resp)
+        this.props.setCartList(resp.data)
+      }) 
+      this.updateCartArray()
+    }
 
     render() {
       
@@ -32,10 +50,10 @@ class Cart extends Component {
           <table className="tableDesign">
             <tbody >
               <tr className="data">
-                <td><Avatar></Avatar></td>
-                <td>Art Description</td>
-                <td>Art size</td>
-                <td>Art Price</td>
+                <td><Avatar>{this.props.cart.cartItem.imageUrl}</Avatar></td>
+                <td>{this.props.cart.cartItem.description}</td>
+                <td>{this.props.cart.cartItem.size}</td>
+                <td>{this.props.cart.cartItem.price}</td>
                 <td><Button className="quantitybuttons" onClick={this.decline}><Icon type="minus" /></Button>
                 <span>{this.state.count}</span>
                 <Button className="quantitybuttons" onClick={this.increase}><Icon type="plus" /></Button>
@@ -52,4 +70,16 @@ class Cart extends Component {
 }
 }
 
-export default Cart;
+const mapStateToProps = state => {
+  console.log("state", state)
+  return state
+}
+const mapDispatchToProps = dispatch => ({
+  setCartList(arr) {
+    dispatch({
+      type: "CART_ITEM",
+      payload: arr
+    })
+  }
+})
+export default connect(mapStateToProps, mapDispatchToProps) (Cart);

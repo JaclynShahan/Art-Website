@@ -65,7 +65,7 @@ onEditCard = (id, img, ttl, desc, sz, prc) => {
             <p>Dimensions: {this.props.size}</p>
             <p>Price: {this.props.price}</p>
             <div className="buttonPadding">
-            <Button><Icon type="shopping"/>Add to Cart</Button>
+            <Button onClick={() => this.props.addCart(this.props.newArt.id, this.props.cart.cartItem)}><Icon type="shopping"/>Add to Cart</Button>
             <Button 
             onClick={() => this.openEditModal()}
             className="editbutton"><Icon type="edit"/>
