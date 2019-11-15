@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Axios from 'axios';
+import {connect} from 'react-redux';
 import { Input } from 'antd';
 
 
@@ -34,10 +34,10 @@ class Search extends Component {
                     }
             })
             console.log("Filtered Art", filterGallery)
-            //this.props.setSearchArt(filterGallery)
+            this.props.setSearchArt(filterGallery)
         }
         else {
-            //this.props.setSearchArt([])
+            this.props.setSearchArt([])
         }
     }
 
@@ -46,6 +46,7 @@ class Search extends Component {
         return (
             <div>
             <Input.Search 
+            className="searchbar"
             placeholder="Search Gallery..."
             value={searchStr}
             onChange={e => this.setState({searchStr: e.target.value})}
@@ -56,6 +57,18 @@ class Search extends Component {
     }
 }
 
-export default Search;
+const mapStateToProps = state => {
+    console.log("state:", state)
+    return state
+}
 
-//make redux info
+const mapDispatchToProps = dispatch => ({
+   setSearchArt (arr)  {
+       dispatch ({
+           type: "SEARCH_LIST",
+           payload: arr
+       })
+   }
+})
+export default connect (mapStateToProps, mapDispatchToProps) (Search);
+

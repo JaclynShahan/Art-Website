@@ -7,7 +7,8 @@ const initialState = {
     artList: [],
     setShowModal: false,
     clearInputs: "",
-    editModal: false
+    editModal: false,
+    searchArtList: []
 }
 
 export default function reducer (state = initialState, action) {
@@ -32,6 +33,8 @@ export default function reducer (state = initialState, action) {
         return {...tempState, clearInputs: action.payload}
         case "EDIT_MODAL" :
         return {...tempState, editModal: action.payload}
+        case "SEARCH_LIST" :
+        return {...tempState, searchArtList: action.payload}
     }
     return tempState
 }
