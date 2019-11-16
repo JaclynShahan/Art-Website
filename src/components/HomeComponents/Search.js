@@ -14,7 +14,7 @@ class Search extends Component {
 
     onSearch = () => {
         if (this.state.searchStr.length > 0) {
-            const filterGallery = this.props.main.artList.filter(art => {
+            const filterGallery = this.props.newArt.artList.filter(art => {
                 if (art.title
                     .toLowerCase()
                     .includes(this.state.searchStr.toLowerCase()) ||

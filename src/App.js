@@ -17,9 +17,9 @@ function App (props) {
            
          
       
-      {store.getState().login.auth ? 
-                <Link to='/login' className="links login">Login <Icon type="user"/> </Link> :
-                <Link to='/' className="links homelink">Gallery <Icon type="shop"/></Link> }
+     
+                <Link to='/login' className="links login">Login <Icon type="user"/> </Link> 
+                <Link to='/' className="links homelink">Gallery <Icon type="shop"/></Link> 
                
                 <Link to='/cart' className="links cart">
 

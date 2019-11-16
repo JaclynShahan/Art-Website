@@ -36,7 +36,7 @@ class Cart extends Component {
     //use sessions for this with node since only one user
     addCart = (id, items) => {
       const cartList = items
-      cartList.push(this.props.newArt.id)
+      cartList.push(this.props.main.id)
       Axios.post(`/api/cartList/${id}`, {
         cartArr: cartList
       }).then(resp => {

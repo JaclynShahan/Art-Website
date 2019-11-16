@@ -5,6 +5,9 @@ const {json} = require("body-parser");
 const session = require("express-session");
 require("dotenv").config()
 
+const controller = require(`${__dirname}/controller/controller`)
+
+
 const app = express();
 
 app.use(cors());
@@ -16,6 +19,9 @@ app.use(
       saveUninitialized: false
     })
   )
+
+app.get("/api/login", controller.loginUser)
+app.put("/api/logout", controller.logoutUser)
 
 const port = 3110
 
@@ -58,10 +64,10 @@ app.post(`/api/createArt`, (req, res) => {
 })
 app.post(`/api/verifyUser`, (req, res) => {
     console.log("request received")
-    const {username, password} = req.body
+    const {username, pin} = req.body
     console.log(process.env.pin, process.env.user)
-    console.log(username, password)
-    if (username == process.env.user && password == process.env.pin) {
+    console.log(username, pin)
+    if (username == process.env.user && pin == process.env.pin) {
         res.status(200).send(true)
     } else {
         res.status(200).send(false)

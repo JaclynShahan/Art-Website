@@ -4,7 +4,6 @@ const initialState = {
     size: "",
     price: "",
     imageUrl: "",
-    artList: [],
     setShowModal: false,
     clearInputs: "",
    
@@ -25,8 +24,7 @@ export default function reducer (state = initialState, action) {
         return {...tempState, price: action.payload}
         case "SHOW_NEW_MODAL" :
         return {...tempState, setShowModal: action.payload}
-        case "ART_LIST" :
-        return {...tempState, artList: action.payload}
+       
         case "NEW_IMAGE" :
         return {...tempState, imageUrl: action.payload}
         case "CLEAR_INPUTS" :

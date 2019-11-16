@@ -5,22 +5,38 @@ import { Form, Icon, Input, Button, Checkbox, Avatar, Upload, message } from 'an
 import './Login.css'
 import {connect} from 'react-redux';
 import Axios from 'axios';
+import {Redirect} from 'react-router-dom';
 
 class Login extends Component {
   constructor() {
     super()
     this.state = {
-      loading: false
+      loading: false,
+      user: {}
     }
+  }
+
+  // getUser() {
+  //   Axios
+  //     .get("/api/loginUser")
+  //     .then(resp => this.setState({user: resp.data}))
+  // }
+
+  logoutUser() {
+    Axios.put("/api/logoutUser").then(resp => {
+      console.log(resp)
+
+    })
   }
 
   authRequest = () => {
     Axios.post(`/api/verifyUser`, {
       username: this.props.login.username,
-      password: this.props.login.password
+      pin: this.props.login.pin
     }).then(resp => {
       console.log(resp.data)
       this.props.setAuthentication(resp.data)
+      // this.setState({user: resp.data})
     })
   }
   
@@ -31,7 +47,7 @@ class Login extends Component {
           
           <form className='form-content'>
           <div className='imgcontainer'>
-            <Avatar size={80} src={this.props.newArt.imageUrl} />
+            <Avatar size={120} src={this.props.login.userImage} />
           </div>
         
           <div className='container'>
@@ -45,11 +61,13 @@ class Login extends Component {
             <Input
              type='password' 
              placeholder='Enter Password...' 
-             onChange={e => this.props.setPassword(e)}
+             onChange={e => this.props.setPin(e)}
              />
             <div className='container'>
               <br />
-              <Button onClick={this.authRequest} type='submit'>Login</Button>
+              <Button onClick={() => this.authRequest()} type='submit'>Login</Button>
+              {/* {this.state.user.username && this.state.user.pin ? <h2>Logged in...</h2> : null} */}
+              {this.props.login.user.username && this.props.login.user.pin ? <Redirect to='/' /> : ''}
               <span className='signup'>OR</span>
               <span className='signup'>
                 <a href='a'>Create Account</a>
@@ -61,7 +79,10 @@ class Login extends Component {
             </div>
           </div>
           <div className='container'>
-            <Button>Cancel</Button>
+          <Button onClick={() => this.logoutUser()} className="buttons">
+          {" "}
+          Logout{" "}
+        </Button>
             <span className='psw'>
               Forgot <a href='#'>Password?</a>
             </span>
@@ -90,9 +111,9 @@ const mapDispatchToProps = dispatch => ({
       payload: e.target.value
     })
   },
-  setPassword (e) {
+  setPin (e) {
     dispatch({
-      type: "SET_PASSWORD",
+      type: "SET_PIN",
       payload: e.target.value
     })
   },
