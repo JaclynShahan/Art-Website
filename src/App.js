@@ -7,6 +7,7 @@ import router from './router';
 import {Link} from 'react-router-dom';
 import store from './store';
 import Search from './components/HomeComponents/Search';
+import Home from './components/HomeComponents/Home';
 
 function App (props) {
   
@@ -14,10 +15,11 @@ function App (props) {
       <div>
          <div className="applogo">
            
-          
-        
-                <Link to='/login' className="links login">Login <Icon type="user"/> </Link> 
-                <Link to='/' className="links homelink">Gallery <Icon type="shop"/></Link> 
+         
+      
+      {store.getState().login.auth ? 
+                <Link to='/login' className="links login">Login <Icon type="user"/> </Link> :
+                <Link to='/' className="links homelink">Gallery <Icon type="shop"/></Link> }
                
                 <Link to='/cart' className="links cart">
 

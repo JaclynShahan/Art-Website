@@ -6,6 +6,7 @@ import login from './reducers/login';
 import contact from './reducers/contact';
 import edit from './reducers/edit';
 import cart from './reducers/cart';
+import main from './reducers/main';
 
 export default createStore(
 combineReducers({
@@ -13,7 +14,8 @@ combineReducers({
     login,
     contact,
     edit,
-    cart
+    cart,
+    main
 
 }),
 applyMiddleware(promiseMiddleware)

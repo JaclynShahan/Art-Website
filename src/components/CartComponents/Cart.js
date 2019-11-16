@@ -62,7 +62,7 @@ class Cart extends Component {
                 <Button className="quantitybuttons" onClick={this.increase}><Icon type="plus" /></Button>
                 </td>
                 <td>
-                  <th>Total:</th>
+                  <span>Total:</span>
 
                 </td>
                 <td className="buttondata"><Button className="quantitybuttons"><Icon type="delete" /></Button> </td>

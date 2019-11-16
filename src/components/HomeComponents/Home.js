@@ -23,8 +23,8 @@ class Home extends Component {
   }
 
   artData = () => {
-      console.log("artData function: ", this.props.newArt.artList)
-      return this.props.newArt.artList
+      console.log("artData function: ", this.props.main.artList)
+      return this.props.main.artList
   }
   onDelete = id => {
     console.log(id)
