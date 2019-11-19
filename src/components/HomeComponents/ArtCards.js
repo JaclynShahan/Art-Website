@@ -56,16 +56,16 @@ onEditCard = (id, img, ttl, desc, sz, prc) => {
               hoverable
               style={{ width: 300, height: 380 }}
               title={
-                <img src={this.props.main.imageUrl} />
+                <img src={this.props.newArt.imageUrl} />
               }
             >
             
-            <h3>{this.props.main.title}</h3>
-            <p>Description: {this.props.main.description}</p>
-            <p>Dimensions: {this.props.main.size}</p>
-            <p>Price: {this.props.main.price}</p>
+            <h3>{this.props.newArt.title}</h3>
+            <p>Description: {this.props.newArt.description}</p>
+            <p>Dimensions: {this.props.newArt.size}</p>
+            <p>Price: {this.props.newArt.price}</p>
             <div className="buttonPadding">
-            <Button onClick={() => this.props.addCart(this.props.main.id, this.props.cart.cartItem)}><Icon type="shopping"/>Add to Cart</Button>
+            <Button onClick={() => this.props.addCart(this.props.newArt.id, this.props.cart.cartItem)}><Icon type="shopping"/>Add to Cart</Button>
             <Button 
             onClick={() => this.openEditModal()}
             className="editbutton"><Icon type="edit"/>
@@ -75,7 +75,7 @@ onEditCard = (id, img, ttl, desc, sz, prc) => {
             title="Edit Card"
         
            onCancel={() => this.props.setEditModal(false)}
-            visible={this.props.main.editModal}
+            visible={this.props.newArt.editModal}
             footer={[]}
             >
               <EditCards 

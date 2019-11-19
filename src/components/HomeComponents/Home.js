@@ -23,8 +23,8 @@ class Home extends Component {
   }
 
   artData = () => {
-      console.log("artData function: ", this.props.main.artList)
-      return this.props.main.artList
+      console.log("artData function: ", this.props.newArt.artList)
+      return this.props.newArt.artList
   }
   onDelete = id => {
     console.log(id)
@@ -69,10 +69,10 @@ class Home extends Component {
             <Contact />
           </div>
             <h2>
-              Like me: <a>www.facebook.com/blah</a> 
+              Like me: <a href="www.facebook.com" target="_blank">www.facebook.com/blah</a>  
                <Icon className='icons' type='facebook' />/ Follow me:
-              <a>www.twitter.com/blah</a> <Icon className='icons' type='twitter' />/
-              Add me: <a>@randomscreenname</a> <Icon type='instagram' />
+              <a href="www.twitter.com" target="_blank">www.twitter.com/blah</a> <Icon className='icons' type='twitter' />/
+              Add me: <a href="www.instagram.com" target="_blank">@randomscreenname</a> <Icon type='instagram' />
             </h2>
           </Footer>
         </Layout>
