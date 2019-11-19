@@ -1,14 +1,23 @@
 import React, { Component } from 'react'
 // import {Link} from 'react-router-dom';
 // import router from './router';
-import { Form, Icon, Input, Button, Checkbox, Avatar, Upload, message } from 'antd'
+import {
+  Form,
+  Icon,
+  Input,
+  Button,
+  Checkbox,
+  Avatar,
+  Upload,
+  message
+} from 'antd'
 import './Login.css'
-import {connect} from 'react-redux';
-import Axios from 'axios';
-import {Redirect} from 'react-router-dom';
+import { connect } from 'react-redux'
+import Axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 class Login extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       loading: false,
@@ -22,10 +31,9 @@ class Login extends Component {
   //     .then(resp => this.setState({user: resp.data}))
   // }
 
-  logoutUser() {
-    Axios.put("/api/logoutUser").then(resp => {
+  logoutUser () {
+    Axios.put('/api/logoutUser').then(resp => {
       console.log(resp)
-
     })
   }
 
@@ -39,35 +47,40 @@ class Login extends Component {
       // this.setState({user: resp.data})
     })
   }
-  
+
   render () {
-  console.log(this.props.login)
+    console.log(this.props.login)
     return (
       <div>
-          
-          <form className='form-content'>
+        <form className='form-content'>
           <div className='imgcontainer'>
             <Avatar size={120} src={this.props.login.userImage} />
           </div>
-        
+
           <div className='container'>
             <label>Username:</label>
             <Input
-             type='text' 
-             placeholder='Enter Username...' 
-            onChange={e => this.props.setUsername(e)}
+              type='text'
+              placeholder='Enter Username...'
+              onChange={e => this.props.setUsername(e)}
             />
             <label>Password:</label>
             <Input
-             type='password' 
-             placeholder='Enter Password...' 
-             onChange={e => this.props.setPin(e)}
-             />
+              type='password'
+              placeholder='Enter Password...'
+              onChange={e => this.props.setPin(e)}
+            />
             <div className='container'>
               <br />
-              <Button onClick={() => this.authRequest()} type='submit'>Login</Button>
+              <Button onClick={() => this.authRequest()} type='submit'>
+                Login
+              </Button>
               {/* {this.state.user.username && this.state.user.pin ? <h2>Logged in...</h2> : null} */}
-              {this.props.login.user.username && this.props.login.user.pin ? <Redirect to='/' /> : ''}
+              {this.props.login.user.username && this.props.login.user.pin ? (
+                <Redirect to='/' />
+              ) : (
+                ''
+              )}
               <span className='signup'>OR</span>
               <span className='signup'>
                 <a href='a'>Create Account</a>
@@ -79,10 +92,10 @@ class Login extends Component {
             </div>
           </div>
           <div className='container'>
-          <Button onClick={() => this.logoutUser()} className="buttons">
-          {" "}
-          Logout{" "}
-        </Button>
+            <Button onClick={() => this.logoutUser()} className='buttons'>
+              {' '}
+              Logout{' '}
+            </Button>
             <span className='psw'>
               Forgot <a href='#'>Password?</a>
             </span>
@@ -93,35 +106,37 @@ class Login extends Component {
   }
 }
 
-
 const mapStateToProps = state => {
-  console.log("state:", state)
+  console.log('state:', state)
   return state
 }
 const mapDispatchToProps = dispatch => ({
   imageHandler (e) {
     dispatch({
-      type: "NEW_IMAGE",
+      type: 'NEW_IMAGE',
       payload: e.target.value
     })
   },
   setUsername (e) {
     dispatch({
-      type: "SET_USERNAME",
+      type: 'SET_USERNAME',
       payload: e.target.value
     })
   },
   setPin (e) {
     dispatch({
-      type: "SET_PIN",
+      type: 'SET_PIN',
       payload: e.target.value
     })
   },
-  setAuthentication(val) {
+  setAuthentication (val) {
     dispatch({
-      type: "USER_AUTH",
+      type: 'USER_AUTH',
       payload: val
     })
   }
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login)

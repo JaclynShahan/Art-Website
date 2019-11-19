@@ -17,24 +17,36 @@ class Home extends Component {
 
   componentDidMount = () => {
     Axios.get(`/api/getArt`).then(resp => {
-      console.log(resp)
+      console.log('getArt:', resp)
       this.props.setArtList(resp.data)
     })
   }
 
   artData = () => {
-      console.log("artData function: ", this.props.newArt.artList)
-      return this.props.newArt.artList
+    console.log('artData function: ', this.props.newArt.artList)
+    return this.props.newArt.artList
   }
   onDelete = id => {
     console.log(id)
     Axios.delete(`/api/deleteArt/${id}`).then(resp => {
-      console.log("deleted")
-      console.log(resp)
+      console.log('deleted', resp)
       this.props.setArtList(resp.data)
     })
   }
-
+  onEditCard = (id, img, ttl, desc, sz, prc) => {
+    Axios.put(`/api/updateCard`, {
+      id: id,
+      imageUrl: img,
+      title: ttl,
+      description: desc,
+      size: sz,
+      price: prc
+    }).then(resp => {
+      console.log('updated:', resp)
+      this.props.setEditModal(false)
+      this.props.setArtList(resp.data)
+    })
+  }
   render () {
     const { Header, Footer, Sider, Content } = Layout
     const { Meta } = Card
@@ -42,37 +54,43 @@ class Home extends Component {
     return (
       <div>
         <Layout>
-          
-          
-          <Content className="contentbox">
-          {this.artData().map(art => (
-              <ArtCards 
-              key={art.id}
-              id={art.id}
-              title={art.title}
-              description={art.description}
-              size={art.size}
-              price={art.price}
-              imageUrl={art.imageUrl}
-              art={art}
-              onDelete={this.onDelete}
-
+          <Content className='contentbox'>
+            {this.artData().map(art => (
+              <ArtCards
+                key={art.id}
+                id={art.id}
+                title={art.title}
+                description={art.description}
+                size={art.size}
+                price={art.price}
+                imageUrl={art.imageUrl}
+                art={art}
+                onDelete={this.onDelete}
+                onEditCard={this.onEditCard}
               />
-          ))}   
+            ))}
           </Content>
-         
-           
-            <NewArtModal />
-          
+
+          <NewArtModal />
+
           <Footer className='footerpage'>
-          <div className="email">
-            <Contact />
-          </div>
+            <div className='email'>
+              <Contact />
+            </div>
             <h2>
-              Like me: <a href="www.facebook.com" target="_blank">www.facebook.com/blah</a>  
-               <Icon className='icons' type='facebook' />/ Follow me:
-              <a href="www.twitter.com" target="_blank">www.twitter.com/blah</a> <Icon className='icons' type='twitter' />/
-              Add me: <a href="www.instagram.com" target="_blank">@randomscreenname</a> <Icon type='instagram' />
+              Like me:{' '}
+              <a href='www.facebook.com' target='_blank'>
+                www.facebook.com/blah
+              </a>
+              <Icon className='icons' type='facebook' />/ Follow me:
+              <a href='www.twitter.com' target='_blank'>
+                www.twitter.com/blah
+              </a>{' '}
+              <Icon className='icons' type='twitter' />/ Add me:{' '}
+              <a href='www.instagram.com' target='_blank'>
+                @randomscreenname
+              </a>{' '}
+              <Icon type='instagram' />
             </h2>
           </Footer>
         </Layout>
@@ -90,6 +108,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: 'ART_LIST',
       payload: arr
+    })
+  },
+  setEditModal (val) {
+    dispatch({
+      type: 'EDIT_MODAL',
+      payload: val
     })
   }
 })
