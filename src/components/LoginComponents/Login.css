@@ -3,7 +3,7 @@
     margin: 5% auto 15% auto; 
     border: 1px solid #888;
     width: 50%;
-    height: 60vh;
+    height: 70vh;
 }
 
 .form {
@@ -21,11 +21,14 @@
   }
 
   .imgcontainer {
-    text-align: center;
-   margin-top: 15px;
+   text-align: center;
+   margin-top: 20px;
     position: relative;
-    padding-right: 20px;
-    
+  border-radius: 30%;
+  background-color: white;
+  overflow: auto;
+  margin-left: 40%;
+  width: 150px;
     
   }
   

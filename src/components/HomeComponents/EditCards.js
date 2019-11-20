@@ -18,7 +18,7 @@ class EditCards extends Component {
         <Input
           className='modalInputs'
           onChange={e => this.props.setEditTitle(e)}
-          value={this.props.edit.title}
+          placeholder={this.props.edit.title}
         />
         <span>Edit Description:</span>
         <Input
@@ -44,7 +44,15 @@ class EditCards extends Component {
           onChange={e => this.props.setEditImage(e)}
           value={this.props.edit.imageUrl}
         />
+         <Button
+          className='cancelButton'
+          onClick={() => this.props.setEditModal(false)}
+          type='primary'
+        >
+          Cancel
+        </Button>
         <Button
+          className="saveButton"
           onClick={() =>
             this.props.onSave(id, imageUrl, title, description, size, price)
           }
@@ -52,13 +60,7 @@ class EditCards extends Component {
         >
           Save
         </Button>
-        <Button
-          className='cancelButton'
-          onClick={() => this.props.setEditModal(false)}
-          type='primary'
-        >
-          Cancel
-        </Button>
+       
       </div>
     )
   }
@@ -101,6 +103,18 @@ const mapDispatchToProps = dispatch => ({
       type: 'EDIT_PRICE',
       payload: e.target.value
     })
+  },
+  setEditModal (val) {
+    dispatch({
+      type: 'EDIT_MODAL',
+      payload: val
+    })
+  },
+  setInspectedCard (art) {
+      dispatch({
+          type: 'SET_EDIT_CARD',
+          payload: art
+      })
   }
 })
 export default connect(

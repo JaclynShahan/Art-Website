@@ -52,11 +52,11 @@ class Cart extends Component {
           <tbody>
             <tr className='data'>
               <td>
-                <Avatar>{this.props.cart.cartItem.imageUrl}</Avatar>
+                <Avatar size={80}>{this.props.cart.imageUrl}</Avatar>
               </td>
-              <td>{this.props.cart.cartItem.description}</td>
-              <td>{this.props.cart.cartItem.size}</td>
-              <td>{this.props.cart.cartItem.price}</td>
+              <td>{this.props.cart.description}</td>
+              <td>{this.props.cart.size}</td>
+              <td>{this.props.cart.price}</td>
               <td>
                 <Button className='quantitybuttons' onClick={this.decline}>
                   <Icon type='minus' />

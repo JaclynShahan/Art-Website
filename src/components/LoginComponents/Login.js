@@ -53,9 +53,9 @@ class Login extends Component {
     return (
       <div>
         <form className='form-content'>
-          <div className='imgcontainer'>
-            <Avatar size={120} src={this.props.login.userImage} />
-          </div>
+           
+            <img className="imgcontainer" src={this.props.login.userImage} />
+          
 
           <div className='container'>
             <label>Username:</label>

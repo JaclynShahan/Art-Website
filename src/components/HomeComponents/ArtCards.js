@@ -42,7 +42,7 @@ class ArtCards extends Component {
           style={{ width: 300, height: 380 }}
           title={<img src={this.props.imageUrl} />}
         >
-          <h3>{this.props.newArt.title}</h3>
+          <h3>{this.props.title}</h3>
           <p>Description: {this.props.description}</p>
           <p>Dimensions: {this.props.size}</p>
           <p>Price: {this.props.price}</p>
@@ -60,7 +60,7 @@ class ArtCards extends Component {
             </Button>
             <Modal
               okText=''
-              title='Edit Card'
+              title="Edit Card" //change to title of chosen art
               onCancel={() => this.props.setEditModal(false)}
               visible={this.props.newArt.editModal}
               footer={[]}
