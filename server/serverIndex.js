@@ -62,6 +62,16 @@ app.post(`/api/createArt`, (req, res) => {
     getArt(req, res)
   })
 })
+
+app.post(`/api/cartList`, (req, res) => {
+    const {imageUrl, title, description, size, price} = req.body
+    console.log("Cart request received", imageUrl, title, description, size, price)
+    console.log(req.body)
+    const dbInstance = req.app.get('db')
+    dbInstance.createCart(imageUrl, title, description, size, price).then(() => {
+        getCart(req, res)
+    }) 
+})
 app.post(`/api/verifyUser`, (req, res) => {
   console.log('request received')
   const { username, pin } = req.body

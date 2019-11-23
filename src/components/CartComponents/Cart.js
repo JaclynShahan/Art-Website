@@ -12,7 +12,7 @@ class Cart extends Component {
     super()
     this.state = {
       count: 0,
-      cartArray: []
+      
     }
   }
   increase = () => {
@@ -27,22 +27,9 @@ class Cart extends Component {
     }
     this.setState({ count })
   }
-  updateCartArray (cartArray) {
-    this.setState({ cartArray })
-  }
+ 
 
-  // use sessions for this with node since only one user
-  addCart = (id, items) => {
-    const cartList = items
-    cartList.push(this.props.main.id)
-    Axios.post(`/api/cartList/${id}`, {
-      cartArr: cartList
-    }).then(resp => {
-      console.log(resp)
-      this.props.setCartList(resp.data)
-    })
-    this.updateCartArray()
-  }
+
 
   render () {
     const { Footer } = Layout
@@ -101,7 +88,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   setCartList (arr) {
     dispatch({
-      type: 'CART_ITEM',
+      type: 'ADD_TO_CART',
       payload: arr
     })
   }

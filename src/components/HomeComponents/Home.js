@@ -12,7 +12,9 @@ import ArtCards from './ArtCards'
 class Home extends Component {
   constructor () {
     super()
-    this.state = {}
+    this.state = {
+      cartArray: []
+    }
   }
 
   componentDidMount = () => {
@@ -47,6 +49,24 @@ class Home extends Component {
       this.props.setArtList(resp.data)
     })
   }
+  // use sessions for this with node since only one user
+  addCart = (id, items) => {
+    const cartList = items
+    cartList.push(this.props.newArt.id)
+    Axios.post(`/api/cartList/${id}`, {
+      cartArr: cartList
+    }).then(resp => {
+      console.log(resp)
+      this.props.setCartList(resp.data)
+    })
+    this.updateCartArray()
+  }
+  // addToCart = (e) => {
+  //   this.props.setCartList(this.props.art)
+  // }
+  updateCartArray (cartArray) {
+    this.setState({ cartArray })
+  }
   render () {
     const { Header, Footer, Sider, Content } = Layout
     const { Meta } = Card
@@ -67,6 +87,7 @@ class Home extends Component {
                 art={art}
                 onDelete={this.onDelete}
                 onEditCard={this.onEditCard}
+               addCart={this.addCart}
               />
             ))}
           </Content>
@@ -101,7 +122,11 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   console.log('state:', state)
-  return state
+return state
+// return {
+//   newArt: state.newArt.artList,
+//   cartItem: state.cart.cartItem
+// }
 }
 const mapDispatchToProps = dispatch => ({
   setArtList (arr) {
@@ -114,6 +139,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: 'EDIT_MODAL',
       payload: val
+    })
+  },
+  setCartList (arr) {
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: arr
     })
   }
 })
