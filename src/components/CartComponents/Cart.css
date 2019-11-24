@@ -1,4 +1,10 @@
 .footFloat {
-    position: absolute;
+    position: fixed;
     bottom: 0;
+}
+
+.cartImg {
+    height: 80px;
+    width: 80px;
+    border-radius: 20px;
 }

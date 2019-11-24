@@ -11,8 +11,7 @@ class Cart extends Component {
   constructor () {
     super()
     this.state = {
-      count: 0,
-      
+      count: 0
     }
   }
   increase = () => {
@@ -27,41 +26,46 @@ class Cart extends Component {
     }
     this.setState({ count })
   }
- 
-
-
 
   render () {
+    console.log("Cart length: ", this.props.cart.cartItem.length);
     const { Footer } = Layout
     return (
-      <div>
-        <table className='tableDesign'>
+      <div className="tableDesign">
+        <table className="tableDesign">
           <tbody>
-            <tr className='data'>
-              <td>
-                <Avatar size={80}>{this.props.cart.imageUrl}</Avatar>
-              </td>
-              <td>{this.props.cart.description}</td>
-              <td>{this.props.cart.size}</td>
-              <td>{this.props.cart.price}</td>
-              <td>
-                <Button className='quantitybuttons' onClick={this.decline}>
-                  <Icon type='minus' />
-                </Button>
-                <span>{this.state.count}</span>
-                <Button className='quantitybuttons' onClick={this.increase}>
-                  <Icon type='plus' />
-                </Button>
-              </td>
-              <td>
-                <span>Total:</span>
-              </td>
-              <td className='buttondata'>
-                <Button className='quantitybuttons'>
-                  <Icon type='delete' />
-                </Button>{' '}
-              </td>
-            </tr>
+            {this.props.cart.cartItem.map((item, i) => {
+              return (
+                <tr className='data' key={i}>
+                  <td>
+                    <img className="cartImg" src={item.imageUrl} />
+                  </td>
+                  <td>{item.description}</td>
+                  <td>{item.size}</td>
+                  {/* <td>{item.price}</td> */}
+                  <td>
+                    <Button className='quantitybuttons' onClick={this.decline}>
+                      <Icon type='minus' />
+                    </Button>
+                    <span>{1}</span>
+                    <Button className='quantitybuttons' onClick={this.increase}>
+                      <Icon type='plus' />
+                    </Button>
+                  </td>
+                  <td>
+                    <span>Total:</span>
+                    {item.price}
+                  </td>
+                  <td className='buttondata'>
+                    <Button className='quantitybuttons'>
+                      <Icon type='delete' />
+                    </Button>{' '}
+                  </td>
+                </tr>
+              )
+            })
+          }
+
           </tbody>
         </table>
         <Footer className='footerpage footFloat'>

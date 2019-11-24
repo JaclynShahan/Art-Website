@@ -18,6 +18,7 @@
   }
 
   .footerpage{
+      height: 15vh;
     width: 100vw;
     background-image: url("https://images.unsplash.com/photo-1561579537-ce3febff18a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
   background-size: cover;
@@ -109,6 +110,8 @@ img {
 
 .tableDesign {
     width: 100vw;
+    overflow-y: scroll;
+    height: 70vh;
     
 }
 
@@ -119,29 +122,12 @@ float: right;
 }
 
 .data {
-    height: 100px;
+    overflow-y: scroll;
+    height: 50px;
     border: 2px solid black;
-    animation: colorchange 50s; 
-    -webkit-animation: colorchange 50s; /* Chrome and Safari */
-  }
+}
 
-  @keyframes colorchange
-  {
-    0%   {background: rgb(209, 96, 96);}
-    25%  {background: rgb(133, 209, 114);}
-    50%  {background: rgb(98, 98, 163);}
-    75%  {background: rgb(133, 209, 114);}
-    100% {background: rgb(209, 96, 96);}
-  }
 
-  @-webkit-keyframes colorchange 
-  {
-    0%   {background: rgb(209, 96, 96);}
-    25%  {background: rgb(133, 209, 114);}
-    50%  {background: rgb(98, 98, 163);}
-    75%  {background: rgb(133, 209, 114);}
-    100% {background: rgb(209, 96, 96);}
-  }
 
   .searchbar {
       height: 25px;

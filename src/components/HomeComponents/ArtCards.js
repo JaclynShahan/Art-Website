@@ -49,7 +49,7 @@ class ArtCards extends Component {
           <div className='buttonPadding'>
             <Button
               onClick={() =>
-                this.props.addCart(this.props.id, this.props.cart.cartItem)
+                this.props.addCart(this.props.id, this.props.art)
               }
             >
               <Icon type='shopping' />
@@ -60,7 +60,7 @@ class ArtCards extends Component {
             </Button>
             <Modal
               okText=''
-              title="Edit Card" //change to title of chosen art
+              title='Edit Card' // change to title of chosen art
               onCancel={() => this.props.setEditModal(false)}
               visible={this.props.newArt.editModal}
               footer={[]}

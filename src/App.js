@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import logo from './logo.svg'
 import './App.css'
 import Login from './components/LoginComponents/Login.js'
@@ -7,9 +7,24 @@ import router from './router'
 import { Link } from 'react-router-dom'
 import store from './store'
 import Search from './components/HomeComponents/Search'
+import { connect } from 'react-redux'
 import Home from './components/HomeComponents/Home'
+import Axios from 'axios';
 
-function App (props) {
+class App extends Component {
+constructor(props) {
+  super(props)
+  this.state = {
+
+  }
+}
+componentDidMount = () => {
+Axios.get(`/api/getCart`).then(resp => {
+  console.log("getCart:" , resp)
+  this.props.setCartList(resp.data)
+})
+}
+render () {
   return (
     <div>
       <div className='applogo'>
@@ -25,7 +40,7 @@ function App (props) {
           <Icon type='shopping-cart' />
           <Badge
             style={{ height: '18px', width: '1px', marginTop: '10px' }}
-            count={0}
+            count={this.props.cart.cartItem.length}
             showZero
           />
         </Link>
@@ -37,5 +52,16 @@ function App (props) {
     </div>
   )
 }
+ 
+}
 
-export default App
+const mapStateToProps = state => state;
+const mapDispatchToProps = dispatch => ({
+  setCartList (arr) {
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: arr
+    })
+  }
+})
+export default connect(mapStateToProps, mapDispatchToProps)(App)

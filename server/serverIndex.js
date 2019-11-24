@@ -14,8 +14,8 @@ app.use(express.json())
 app.use(
   session({
     secret: 'this is my super secret',
-    resave: false,
-    saveUninitialized: false
+    resave: true,
+    saveUninitialized: true
   })
 )
 
@@ -62,15 +62,22 @@ app.post(`/api/createArt`, (req, res) => {
     getArt(req, res)
   })
 })
-
+app.get(`/api/getCart`, (req, res) => {
+    if (!Array.isArray(req.session.cart)){
+        req.session.cart = [];
+    } 
+    res.status(200).send(req.session.cart)
+})
 app.post(`/api/cartList`, (req, res) => {
-    const {imageUrl, title, description, size, price} = req.body
-    console.log("Cart request received", imageUrl, title, description, size, price)
-    console.log(req.body)
-    const dbInstance = req.app.get('db')
-    dbInstance.createCart(imageUrl, title, description, size, price).then(() => {
-        getCart(req, res)
-    }) 
+
+//   console.log("Item id: ", req.params.id)
+//   console.log("Session ID: ", req.session.id)
+  if (!Array.isArray(req.session.cart)){
+      req.session.cart = [];
+    }
+    req.session.cart.push(req.body.art);
+    res.status(200).send(req.session.cart);
+
 })
 app.post(`/api/verifyUser`, (req, res) => {
   console.log('request received')

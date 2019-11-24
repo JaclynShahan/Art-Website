@@ -13,7 +13,6 @@ class Home extends Component {
   constructor () {
     super()
     this.state = {
-      cartArray: []
     }
   }
 
@@ -50,23 +49,15 @@ class Home extends Component {
     })
   }
   // use sessions for this with node since only one user
-  addCart = (id, items) => {
-    const cartList = items
-    cartList.push(this.props.newArt.id)
-    Axios.post(`/api/cartList/${id}`, {
-      cartArr: cartList
+  addCart = (id, art) => {
+    Axios.post(`/api/cartList`, {
+      art
     }).then(resp => {
-      console.log(resp)
+      console.log("Cart response: ", resp.data)
       this.props.setCartList(resp.data)
     })
-    this.updateCartArray()
   }
-  // addToCart = (e) => {
-  //   this.props.setCartList(this.props.art)
-  // }
-  updateCartArray (cartArray) {
-    this.setState({ cartArray })
-  }
+
   render () {
     const { Header, Footer, Sider, Content } = Layout
     const { Meta } = Card
@@ -87,7 +78,7 @@ class Home extends Component {
                 art={art}
                 onDelete={this.onDelete}
                 onEditCard={this.onEditCard}
-               addCart={this.addCart}
+                addCart={this.addCart}
               />
             ))}
           </Content>
@@ -122,11 +113,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   console.log('state:', state)
-return state
-// return {
-//   newArt: state.newArt.artList,
-//   cartItem: state.cart.cartItem
-// }
+  return state
 }
 const mapDispatchToProps = dispatch => ({
   setArtList (arr) {
