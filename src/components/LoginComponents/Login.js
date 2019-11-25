@@ -31,11 +31,6 @@ class Login extends Component {
   //     .then(resp => this.setState({user: resp.data}))
   // }
 
-  logoutUser () {
-    Axios.put('/api/logoutUser').then(resp => {
-      console.log(resp)
-    })
-  }
 
   authRequest = () => {
     Axios.post(`/api/verifyUser`, {
@@ -76,7 +71,7 @@ class Login extends Component {
                 Login
               </Button>
               {/* {this.state.user.username && this.state.user.pin ? <h2>Logged in...</h2> : null} */}
-              {this.props.login.user.username && this.props.login.user.pin ? (
+              {this.props.login.authentication ? (
                 <Redirect to='/' />
               ) : (
                 ''
@@ -92,10 +87,10 @@ class Login extends Component {
             </div>
           </div>
           <div className='container'>
-            <Button onClick={() => this.logoutUser()} className='buttons'>
+            {/* <Button onClick={() => this.logoutUser()} className='buttons'>
               {' '}
               Logout{' '}
-            </Button>
+            </Button> */}
             <span className='psw'>
               Forgot <a href='#'>Password?</a>
             </span>
