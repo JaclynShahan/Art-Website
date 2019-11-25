@@ -26,6 +26,13 @@ class Cart extends Component {
     }
     this.setState({ count })
   }
+  onCartDelete = i => {
+    console.log(i)
+    Axios.delete(`/api/deleteFromCart/${i}`).then(resp => {
+      console.log('deleted', resp)
+      this.props.setCartList(resp.data)
+    })
+  }
 
   render () {
     console.log("Cart length: ", this.props.cart.cartItem.length);
@@ -42,7 +49,7 @@ class Cart extends Component {
                   </td>
                   <td>{item.description}</td>
                   <td>{item.size}</td>
-                  {/* <td>{item.price}</td> */}
+                 
                   <td>
                     <Button className='quantitybuttons' onClick={this.decline}>
                       <Icon type='minus' />
@@ -57,7 +64,7 @@ class Cart extends Component {
                     {item.price}
                   </td>
                   <td className='buttondata'>
-                    <Button className='quantitybuttons'>
+                    <Button className='quantitybuttons' onClick={() => this.onCartDelete()}>
                       <Icon type='delete' />
                     </Button>{' '}
                   </td>
