@@ -10,7 +10,7 @@ class NewArtModal extends Component {
   }
   onSave = e => {
     Axios.post(`/api/createArt`, {
-      image: this.props.newArt.imageUrl,
+      image: this.props.newArt.imageurl,
       title: this.props.newArt.title,
       description: this.props.newArt.description,
       size: this.props.newArt.size,
@@ -40,7 +40,7 @@ class NewArtModal extends Component {
           <table>
             <tbody>
               {/* <br></br> header */}
-
+          
               <tr>
                 <td>
                   <span>Title: </span>
@@ -106,7 +106,7 @@ class NewArtModal extends Component {
                     className='modalInputs'
                     onChange={e => this.props.imageHandler(e)}
                     placeholder='Image URL'
-                    value={this.props.newArt.imageUrl}
+                    value={this.props.newArt.imageurl}
                   />
                 </td>
               </tr>

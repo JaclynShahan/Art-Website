@@ -37,7 +37,7 @@ class Home extends Component {
   onEditCard = (id, img, ttl, desc, sz, prc) => {
     Axios.put(`/api/updateCard`, {
       id: id,
-      imageUrl: img,
+      imageurl: img,
       title: ttl,
       description: desc,
       size: sz,
@@ -74,7 +74,7 @@ class Home extends Component {
                 description={art.description}
                 size={art.size}
                 price={art.price}
-                imageUrl={art.imageUrl}
+                imageurl={art.imageurl}
                 art={art}
                 onDelete={this.onDelete}
                 onEditCard={this.onEditCard}

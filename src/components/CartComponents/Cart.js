@@ -45,7 +45,7 @@ class Cart extends Component {
               return (
                 <tr className='data' key={i}>
                   <td>
-                    <img className="cartImg" src={item.imageUrl} />
+                    <img className="cartImg" src={item.imageurl} />
                   </td>
                   <td>{item.description}</td>
                   <td>{item.size}</td>

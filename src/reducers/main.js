@@ -4,7 +4,7 @@ const initialState = {
   description: '',
   size: '',
   price: '',
-  imageUrl: '',
+  imageurl: '',
   searchArtList: [],
   artList: [],
   editModal: false
@@ -23,7 +23,7 @@ export default function reducer (state = initialState, action) {
     case 'PRICE':
       return { ...tempState, price: action.payload }
     case 'IMAGE_URL':
-      return { ...tempState, imageUrl: action.payload }
+      return { ...tempState, imageurl: action.payload }
     case 'SEARCH_LIST':
       return { ...tempState, searchArtList: action.payload }
     case 'ART_LIST':

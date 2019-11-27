@@ -1,2 +1,2 @@
-INSERT INTO art_list (imageUrl, title, description, size, price)
-VALUES ($1, $2, $3, $4)
+INSERT INTO art_list (title, description, size, price, imageurl)
+VALUES ($1, $2, $3, $4, $5)

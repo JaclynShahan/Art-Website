@@ -29,7 +29,7 @@ class ArtCards extends Component {
   }
 
   render () {
-    const { imageUrl } = this.state
+    const { imageurl } = this.state
     const { Header, Footer, Sider, Content } = Layout
     const { Meta } = Card
     console.log('Art Card props:', this.props)
@@ -40,7 +40,7 @@ class ArtCards extends Component {
           className='cardspace'
           hoverable
           style={{ width: 300, height: 380 }}
-          title={<img src={this.props.imageUrl} />}
+          title={<img src={this.props.imageurl} />}
         >
           <h3>{this.props.title}</h3>
           <p>Description: {this.props.description}</p>

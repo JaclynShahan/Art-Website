@@ -9,7 +9,7 @@ class EditCards extends Component {
   }
 
   render () {
-    const { id, imageUrl, title, description, size, price } = this.props.edit
+    const { id, imageurl, title, description, size, price } = this.props.edit
 
     console.log('Props', this.props)
     return (
@@ -42,7 +42,7 @@ class EditCards extends Component {
         <Input
           className='modalInputs'
           onChange={e => this.props.setEditImage(e)}
-          value={this.props.edit.imageUrl}
+          value={this.props.edit.imageurl}
         />
          <Button
           className='cancelButton'
@@ -54,7 +54,7 @@ class EditCards extends Component {
         <Button
           className="saveButton"
           onClick={() =>
-            this.props.onSave(id, imageUrl, title, description, size, price)
+            this.props.onSave(id, imageurl, title, description, size, price)
           }
           type='primary'
         >

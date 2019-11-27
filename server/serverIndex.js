@@ -54,11 +54,11 @@ app.post(`/api/sendMessage`, (req, res) => {
   res.status(200).json((message = 'working'))
 })
 app.post(`/api/createArt`, (req, res) => {
-  const { title, description, size, price } = req.body
-  console.log('Request received', imageUrl, title, description, size, price)
+  const { title, description, size, price, image} = req.body
+  console.log('Request received', title, description, size, price, image)
   console.log(req.body)
   const dbInstance = req.app.get('db')
-  dbInstance.createArt(title, description, size, price).then(() => {
+  dbInstance.createArt(title, description, size, price, image).then(() => {
     getArt(req, res)
   })
 })
@@ -91,12 +91,12 @@ app.post(`/api/verifyUser`, (req, res) => {
   }
 })
 app.put(`/api/updateCard`, (req, res) => {
-  const { id, title, description, size, price, imageUrl } = req.body
+  const { id, title, description, size, price, imageurl } = req.body
   console.log(req.body)
-  console.log('Updated', id, title, description, size, price, imageUrl)
+  console.log('Updated', id, title, description, size, price, imageurl)
   const dbInstance = req.app.get('db')
   dbInstance
-    .updateCard(id, title, description, size, price, imageUrl)
+    .updateCard(id, title, description, size, price, imageurl)
     .then(() => {
       getArt(req, res)
     })
