@@ -24,7 +24,11 @@ class Home extends Component {
   }
 
   artData = () => {
-    console.log('artData function: ', this.props.newArt.artList)
+    if (this.props.newArt.searchArtList.length > 0) {
+      console.log("contents in searchArr exist")
+      return this.props.newArt.searchArtList
+    }
+    // console.log('artData function: ', this.props.newArt.artList)
     return this.props.newArt.artList
   }
   onDelete = id => {

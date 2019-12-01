@@ -79,6 +79,13 @@ app.post(`/api/cartList`, (req, res) => {
     res.status(200).send(req.session.cart);
 
 })
+
+//***WORK ON THIS */
+// app.delete(`/api/deleteFromCart:id`, (req, res) => {
+    
+//     req.session.cart.slice(req.params.art);
+//     res.status(200).send(req.session.cart)
+// })
 app.post(`/api/verifyUser`, (req, res) => {
   console.log('request received')
   const { username, pin } = req.body
