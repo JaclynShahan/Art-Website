@@ -68,4 +68,14 @@ background-repeat: no-repeat;
   margin-top: 15px;  
 }
 
+.layout {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+  align-content: stretch;
+  height: 100vh;
+}
+
 

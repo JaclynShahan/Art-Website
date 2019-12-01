@@ -11,6 +11,7 @@ import { connect } from 'react-redux'
 import Home from './components/HomeComponents/Home'
 import Axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import Contact from './components/Contact';
 
 class App extends Component {
   constructor (props) {
@@ -35,7 +36,7 @@ class App extends Component {
 
   render () {
     return (
-      <div>
+      <div className="layout">
         <div className='applogo'>
           {this.props.login.authentication ? (
             <Button onClick={() => this.logoutUser()}>Logout</Button>
@@ -61,8 +62,29 @@ class App extends Component {
           <Search />
           <h1 className='logotitle'>***MY COOL LOGO***</h1>
         </div>
-
+          <div style={{height: "100%" , overflowY: "scroll"}}>
         {router}
+        </div>
+        <div className='footerpage'>
+            <div className='email'>
+              <Contact />
+            </div>
+            <h2>
+              Like me:{' '}
+              <a href='http://www.facebook.com' target='_blank'>
+                www.facebook.com/blah
+              </a>
+              <Icon className='fbicon' type='facebook' />/ Follow me:
+              <a href='http://www.twitter.com' target='_blank'>
+                www.twitter.com/blah
+              </a>{' '}
+              <Icon className='icons' type='twitter' />/ Add me:{' '}
+              <a href='http://www.instagram.com' target='_blank'>
+                @randomscreenname
+              </a>{' '}
+              <Icon type='instagram' />
+            </h2>
+          </div>
       </div>
     )
   }

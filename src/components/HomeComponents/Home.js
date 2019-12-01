@@ -67,9 +67,9 @@ class Home extends Component {
     const { Meta } = Card
 
     return (
-      <div>
-        <Layout>
-          <Content className='contentbox'>
+      <div style={{height: "100%", overflowY: "scroll"}}>
+      
+          <div className='contentbox'>
             {this.artData().map(art => (
               <ArtCards
                 key={art.id}
@@ -85,31 +85,12 @@ class Home extends Component {
                 addCart={this.addCart}
               />
             ))}
-          </Content>
+          </div>
 
           <NewArtModal />
 
-          <Footer className='footerpage'>
-            <div className='email'>
-              <Contact />
-            </div>
-            <h2>
-              Like me:{' '}
-              <a href='www.facebook.com' target='_blank'>
-                www.facebook.com/blah
-              </a>
-              <Icon className='icons' type='facebook' />/ Follow me:
-              <a href='www.twitter.com' target='_blank'>
-                www.twitter.com/blah
-              </a>{' '}
-              <Icon className='icons' type='twitter' />/ Add me:{' '}
-              <a href='www.instagram.com' target='_blank'>
-                @randomscreenname
-              </a>{' '}
-              <Icon type='instagram' />
-            </h2>
-          </Footer>
-        </Layout>
+    
+       
       </div>
     )
   }

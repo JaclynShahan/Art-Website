@@ -75,18 +75,7 @@ class Cart extends Component {
 
           </tbody>
         </table>
-        <Footer className='footerpage footFloat'>
-          <div className='email'>
-            <Contact />
-          </div>
-          <h2>
-            Like me: <a>www.facebook.com/blah</a>
-            <Icon className='icons' type='facebook' />/ Follow me:
-            <a>www.twitter.com/blah</a>{' '}
-            <Icon className='icons' type='twitter' />/ Add me:{' '}
-            <a>@randomscreenname</a> <Icon type='instagram' />
-          </h2>
-        </Footer>
+     
       </div>
     )
   }
