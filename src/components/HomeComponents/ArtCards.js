@@ -39,6 +39,7 @@ class ArtCards extends Component {
       console.log('updated:', resp)
       this.props.setEditModal(false)
       this.props.setArtList(resp.data)
+      //this.props.clearEdit()
     })
   }
 
@@ -130,6 +131,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: 'EDIT_MODAL',
       payload: val
+    })
+  },
+  clearEdit () {
+    dispatch({
+      type: 'CLEAR_EDIT',
+      payload: ""
     })
   }
 })

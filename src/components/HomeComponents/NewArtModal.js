@@ -168,7 +168,7 @@ const mapDispatchToProps = dispatch => ({
   clearInputs () {
     dispatch({
       type: 'CLEAR_INPUTS',
-      payload: ''
+      payload: ""
     })
   }
 })

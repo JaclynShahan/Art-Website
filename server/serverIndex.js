@@ -69,7 +69,9 @@ app.get(`/api/getCart`, (req, res) => {
     res.status(200).send(req.session.cart)
 })
 app.post(`/api/cartList`, (req, res) => {
-
+    let newArt = req.body.art //creating a new art object to add a CART ID to it
+    newArt.cartId = Math.random()
+    console.log(newArt)
 //   console.log("Item id: ", req.params.id)
 //   console.log("Session ID: ", req.session.id)
   if (!Array.isArray(req.session.cart)){
@@ -81,11 +83,14 @@ app.post(`/api/cartList`, (req, res) => {
 })
 
 //***WORK ON THIS */
-// app.delete(`/api/deleteFromCart:id`, (req, res) => {
-    
-//     req.session.cart.slice(req.params.art);
-//     res.status(200).send(req.session.cart)
-// })
+app.delete(`/api/deleteFromCart/:cartId`, (req, res) => {
+   for (let i = 0; i < req.session.cart.length; i++ ) {
+        if (req.session.cart[i].cartId == req.params.cartId ) {
+            req.session.cart.splice(i, 1)
+        }
+   } 
+    res.status(200).send(req.session.cart)
+})
 app.post(`/api/verifyUser`, (req, res) => {
   console.log('request received')
   const { username, pin } = req.body

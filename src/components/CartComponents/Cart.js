@@ -64,7 +64,7 @@ class Cart extends Component {
                     {item.price}
                   </td>
                   <td className='buttondata'>
-                    <Button className='quantitybuttons' onClick={() => this.onCartDelete()}>
+                    <Button className='quantitybuttons' onClick={() => this.onCartDelete(item.cartId)}>
                       <Icon type='delete' />
                     </Button>{' '}
                   </td>
