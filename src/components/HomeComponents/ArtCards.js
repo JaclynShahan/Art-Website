@@ -23,9 +23,23 @@ class ArtCards extends Component {
   }
 
   openEditModal = () => {
-    const { card } = this.props
-    this.props.setInspectedCard(card)
+    const { art } = this.props
+    this.props.setInspectedCard(art)
     this.props.setEditModal(true)
+  }
+  onEditCard = (id, img, ttl, desc, sz, prc) => {
+    Axios.put(`/api/updateCard`, {
+      id: id,
+      imageurl: img,
+      title: ttl,
+      description: desc,
+      size: sz,
+      price: prc
+    }).then(resp => {
+      console.log('updated:', resp)
+      this.props.setEditModal(false)
+      this.props.setArtList(resp.data)
+    })
   }
 
   render () {
@@ -65,7 +79,7 @@ class ArtCards extends Component {
               visible={this.props.newArt.editModal}
               footer={[]}
             >
-              <EditCards onSave={this.props.onEditCard} />
+              <EditCards onSave={this.onEditCard} />
             </Modal>
             <Popconfirm
               title='Are you sure you want to delete?'
@@ -106,10 +120,10 @@ const mapDispatchToProps = dispatch => ({
     })
   },
 
-  setInspectedCard (card) {
+  setInspectedCard (art) {
     dispatch({
       type: 'SET_EDIT_CARD',
-      payload: card
+      payload: art
     })
   },
   setEditModal (val) {

@@ -38,20 +38,7 @@ class Home extends Component {
       this.props.setArtList(resp.data)
     })
   }
-  onEditCard = (id, img, ttl, desc, sz, prc) => {
-    Axios.put(`/api/updateCard`, {
-      id: id,
-      imageurl: img,
-      title: ttl,
-      description: desc,
-      size: sz,
-      price: prc
-    }).then(resp => {
-      console.log('updated:', resp)
-      this.props.setEditModal(false)
-      this.props.setArtList(resp.data)
-    })
-  }
+
   // use sessions for this with node since only one user
   addCart = (id, art) => {
     Axios.post(`/api/cartList`, {
@@ -81,7 +68,7 @@ class Home extends Component {
                 imageurl={art.imageurl}
                 art={art}
                 onDelete={this.onDelete}
-                onEditCard={this.onEditCard}
+                onEdit={this.props.onEditCard}
                 addCart={this.addCart}
               />
             ))}
