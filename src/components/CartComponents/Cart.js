@@ -38,7 +38,7 @@ class Cart extends Component {
     console.log("Cart length: ", this.props.cart.cartItem.length);
     const { Footer } = Layout
     return (
-      <div className="tableDesign">
+      <div>
         <table className="tableDesign">
           <tbody>
             {this.props.cart.cartItem.map((item, i) => {
@@ -50,7 +50,7 @@ class Cart extends Component {
                   <td>{item.description}</td>
                   <td>{item.size}</td>
                  
-                  <td>
+                  {/* <td>
                     <Button className='quantitybuttons' onClick={this.decline}>
                       <Icon type='minus' />
                     </Button>
@@ -58,7 +58,7 @@ class Cart extends Component {
                     <Button className='quantitybuttons' onClick={this.increase}>
                       <Icon type='plus' />
                     </Button>
-                  </td>
+                  </td> */}
                   <td>
                     <span>Total:</span>
                     {item.price}
@@ -72,10 +72,11 @@ class Cart extends Component {
               )
             })
           }
-
+            
           </tbody>
+          
         </table>
-     
+        <Button className="checkout">Checkout</Button>
       </div>
     )
   }

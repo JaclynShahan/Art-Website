@@ -15,6 +15,7 @@ import './Login.css'
 import { connect } from 'react-redux'
 import Axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import ReactLogo from './react-logo.svg'
 
 class Login extends Component {
   constructor () {
@@ -49,7 +50,7 @@ class Login extends Component {
       <div>
         <form className='form-content'>
            
-            <img className="imgcontainer" src={this.props.login.userImage} />
+            <img className="imgcontainer" src={ReactLogo} />
           
 
           <div className='container'>

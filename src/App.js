@@ -37,6 +37,8 @@ class App extends Component {
   render () {
     return (
       <div className="layout">
+      <img className="backgroundimage" src="http://getwallpapers.com/wallpaper/full/f/e/5/60113.jpg"/>
+      <img className="logoimage" src="https://cdn.freebiesupply.com/logos/thumbs/2x/random-logo.png"/>
         <div className='applogo'>
           {this.props.login.authentication ? (
             <Button onClick={() => this.logoutUser()}>Logout</Button>
@@ -45,7 +47,7 @@ class App extends Component {
               Login <Icon type='user' />{' '}
             </Link>
           )}
-
+ 
           <Link to='/' className='links homelink'>
             Gallery <Icon type='shop' />
           </Link>
@@ -54,13 +56,14 @@ class App extends Component {
             Cart
             <Icon type='shopping-cart' />
             <Badge
-              style={{ height: '18px', width: '1px', marginTop: '10px' }}
+              style={{ height: '18px', marginTop: '10px' }}
               count={this.props.cart.cartItem.length}
               showZero
             />
           </Link>
+         
           <Search />
-          <h1 className='logotitle'>***MY COOL LOGO***</h1>
+         
         </div>
           <div style={{height: "100%" , overflowY: "scroll"}}>
         {router}

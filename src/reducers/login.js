@@ -4,7 +4,6 @@ const initialState = {
   username: '',
   pin: '',
   authentication: false,
-  userImage: 'https://list.lisimg.com/image/7284180/700full.jpg',
   user: {}
 }
 

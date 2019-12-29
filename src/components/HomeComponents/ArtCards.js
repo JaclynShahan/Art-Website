@@ -55,7 +55,7 @@ class ArtCards extends Component {
           className='cardspace'
           hoverable
           style={{ width: 300, height: 380 }}
-          title={<img src={this.props.imageurl} />}
+          title={<img className="cardimg"src={this.props.imageurl} />}
         >
           <h3>{this.props.title}</h3>
           <p>Description: {this.props.description}</p>
