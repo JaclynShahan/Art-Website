@@ -19,7 +19,7 @@ class ArtCards extends Component {
 
   cancel = e => {
     console.log(e)
-    message.error('Click on No')
+    // message.error('Click on No')
   }
 
   openEditModal = () => {
@@ -70,9 +70,12 @@ class ArtCards extends Component {
               <Icon type='shopping' />
               Add to Cart
             </Button>
+            {this.props.login.authentication ? (
             <Button onClick={() => this.openEditModal()} className='editbutton'>
               <Icon type='edit' />
             </Button>
+            ) : ("")
+            }
             <Modal
               okText=''
               title='Edit Card' // change to title of chosen art
@@ -82,20 +85,22 @@ class ArtCards extends Component {
             >
               <EditCards onSave={this.onEditCard} />
             </Modal>
+            {this.props.login.authentication ? (
             <Popconfirm
               title='Are you sure you want to delete?'
-              onConfirm={e => this.confirm(e)}
+              onConfirm={() => this.props.onDelete(this.props.id)}
               onCancel={e => this.cancel(e)}
               okText='Yes'
               cancelText='No'
             >
               <Button
-                onClick={() => this.props.onDelete(this.props.id)}
+                // onClick={() => this.props.onDelete(this.props.id)}
                 className='deletebutton'
               >
                 <Icon type='delete' />
               </Button>
             </Popconfirm>
+            ) : ("")}
           </div>
           {/* <Meta
                 title={this.props.title}

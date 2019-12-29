@@ -27,9 +27,11 @@ class NewArtModal extends Component {
     console.log(this.props.newArt.setShowModal)
     return (
       <div>
+        {this.props.login.authentication ? (
         <Button onClick={() => this.props.showModalHandler(true)}>
           Add New
         </Button>
+        ) : ("")}
         <Modal
           onOk={this.onSave}
           okText='Save'
