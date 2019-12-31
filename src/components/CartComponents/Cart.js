@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import {Link} from 'react-router-dom';
 // import router from './router'
-import { Layout, Avatar, Icon, Button } from 'antd'
+import { Layout, Avatar, Icon, Button, message } from 'antd'
 import Axios from 'axios'
 import { connect } from 'react-redux'
 import Contact from '../Contact'
@@ -33,6 +33,11 @@ class Cart extends Component {
       this.props.setCartList(resp.data)
     })
   }
+
+emptyCart = () => {
+  this.props.setCartList([])
+  message.success('You have Checked Out!')
+}
 
   render () {
     console.log("Cart length: ", this.props.cart.cartItem.length);
@@ -76,7 +81,7 @@ class Cart extends Component {
           </tbody>
           
         </table>
-        <Button className="checkout">Checkout</Button>
+        <Button onClick={() => this.emptyCart()}className="checkout">Checkout</Button>
       </div>
     )
   }
